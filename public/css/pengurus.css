@@ -1,0 +1,191 @@
+:root {
+    --dmi-green: #215a28;
+    --dmi-green-light: #f0f7f1;
+    --text-heading: #1e293b;
+    --text-body: #475569;
+    --border-soft: #f1f5f9;
+}
+
+.pengurus-container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: #fdfdfd;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Header Styling */
+.page-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.main-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin: 0;
+}
+
+.org-name {
+    font-size: 1.3rem;
+    color: var(--dmi-green);
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.badge-period {
+    display: inline-block;
+    background-color: var(--dmi-green-light);
+    color: var(--dmi-green);
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 24px;
+    padding-right: 24px;
+    border-radius: 50px;
+    font-weight: 700;
+    margin-top: 20px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(33, 90, 40, 0.2);
+}
+
+.divider-center {
+    width: 60px;
+    height: 4px;
+    background-color: var(--dmi-green);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    opacity: 0.3;
+}
+
+.table-wrapper-center {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Table Card Design */
+.table-card {
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.15); /* Shadow diperhalus sedikit */
+    margin-bottom: 40px; /* Jarak antar card dikurangi sedikit */
+    border: 2px solid var(--border-soft);
+}
+
+.table-card-header {
+    background-color: #fff;
+    padding-top: 15px; /* Dikurangi dari 20px */
+    padding-bottom: 15px; /* Dikurangi dari 20px */
+    padding-left: 25px;
+    padding-right: 25px;
+    border-bottom: 1.5px solid #00000011;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.table-card-header h3 {
+    font-size: 0.9rem; /* Ukuran font judul tabel dikecilkan */
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-heading);
+    margin: 0;
+}
+
+/* Table Content */
+.dmi-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.dmi-table th {
+    background-color: #f8fafc;
+    padding-top: 10px; /* Lebih ramping */
+    padding-bottom: 10px; /* Lebih ramping */
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 0.7rem; /* Font size dikecilkan */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #94a3b8;
+    text-align: center;
+}
+
+.dmi-table td {
+    padding-top: 12px; /* TINGGI TABEL: Dikecilkan dari 16px */
+    padding-bottom: 12px; /* TINGGI TABEL: Dikecilkan dari 16px */
+    padding-left: 20px;
+    padding-right: 20px;
+    border-bottom: 1.5px solid var(--border-soft);
+    color: var(--text-body);
+    font-size: 0.85rem; /* FONT SIZE: Dikecilkan dari 0.95rem */
+    vertical-align: middle;
+}
+
+.dmi-table tr:hover {
+    background-color: var(--dmi-green-light);
+    transition: background-color 0.2s ease;
+}
+
+/* Kolom Jabatan & Nama */
+.dmi-table td:first-child {
+    font-weight: 700;
+    color: #334155;
+    border-right: 1px solid var(--border-soft);
+    width: 35%; /* Disesuaikan lebarnya */
+}
+
+.dmi-table td:last-child {
+    color: #1a202c;
+    font-weight: 500;
+}
+
+/* Row Khusus */
+.row-important td {
+    background-color: var(--dmi-green-light);
+    color: var(--dmi-green) !important;
+}
+
+/* Departemen Separator */
+.dept-separator td {
+    background-color: #f8fafc !important;
+    font-size: 0.7rem !important; /* Font separator dikecilkan */
+    color: var(--dmi-green) !important;
+    text-align: center !important;
+    font-weight: 800 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-top: 8px !important; /* Lebih tipis */
+    padding-bottom: 8px !important; /* Lebih tipis */
+    border-right: none !important;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 1.5rem;
+    }
+    .table-wrapper-center {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .dmi-table td {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        font-size: 0.8rem;
+    }
+    .org-name{
+        font-size: 0.9rem;
+        padding-top: 10px;
+    }
+    .badge-period{
+        font-size: 0.7rem;
+    }
+}
