@@ -15,53 +15,43 @@
 
     @include('partials.navbar')
 
-        
-@php 
+   @php 
     /**
-     * LOGIKA BREADCRUMB - DMI MASTER
+     * LOGIKA BREADCRUMB - DMI MASTER (DYNAMIC ORIGIN)
      * ---------------------------------------------------------
-     * Mode Glass: Transparan, cocok untuk halaman index/kategori dengan Hero Banner.
-     * Mode Solid: Putih pekat, untuk halaman detail atau halaman tanpa banner.
+     * Mode Glass: Transparan untuk halaman dengan Hero Banner.
+     * Mode Solid: Putih pekat untuk halaman detail/artikel.
      */
     
     $isGlassPage = false; 
     $segments = request()->segments();
     $segmentCount = count($segments);
+    $firstSegment = request()->segment(1);
 
+    // 1. PENENTUAN MODE (GLASS VS SOLID)
     if(!Request::is('/')) {
-        // 1. DAFTAR PARENT: Route utama yang diizinkan menggunakan Mode Glass
-        // Tambahkan 'redaksi' agar /redaksi/berita bisa jadi glass
-        $glassRoutes = ['tentang-kami' ]; 
+        $glassRoutes = ['tentang-kami', 'profil']; 
         
-        $firstSegment = request()->segment(1);
-
-        // Cek apakah segmen pertama ada di daftar glassRoutes
         if (in_array($firstSegment, $glassRoutes)) {
-            // Default awal kita set Glass
             $isGlassPage = true;
 
-            // 2. DAFTAR PENGECUALIAN: Kata kunci yang HARUS Solid (Misal halaman baca)
+            // Pengecualian: Halaman yang harus selalu SOLID
             $excludeToSolid = ['detail-berita', 'pengurus', 'artikel', 'lihat']; 
-
-            // Cek jika ada kata kunci pengecualian di URL
             $hasExcludeKeyword = count(array_intersect($segments, $excludeToSolid)) > 0;
             
-            /**
-             * LOGIKA PENYARINGAN AKHIR:
-             * Jika ada kata kunci pengecualian ATAU level URL terlalu dalam (> 2)
-             * Contoh: 
-             * /berita (1 segmen) -> GLASS
-             * /redaksi/berita (2 segmen) -> GLASS
-             * /redaksi/berita/judul-post (3 segmen) -> SOLID (Otomatis)
-             */
-            if ($hasExcludeKeyword || $segmentCount > 2) {
+            // Jika masuk ke detail atau level URL terlalu dalam, paksa Solid
+            if ($hasExcludeKeyword || $segmentCount > 3) {
                 $isGlassPage = false;
             }
         }
     }
 
+    // 2. KONFIGURASI SEGMEN
     // Segmen yang labelnya tidak bisa diklik (hanya teks)
     $disabledSegments = ['program-kerja', 'tentang-kami', 'kegiatan', 'redaksi']; 
+    
+    // Deteksi asal user (Origin) melalui Query String '?from='
+    $originSource = request()->query('from');
 @endphp
 
 @if(!Request::is('/'))
@@ -82,36 +72,50 @@
                 @php 
                     $link .= "/" . $segment; 
                     $segmentLower = strtolower($segment);
-                    
-                    // Cek apakah segmen ini masuk daftar disabled (tidak bisa diklik)
                     $isDisabled = in_array($segmentLower, $disabledSegments);
                     
-                    // Format teks (slug-name jadi Slug Name)
+                    // Format Label: slug-name -> Slug Name
                     $label = ucwords(str_replace(['-', '_'], ' ', $segment));
-                    
-                    // Logika khusus Detail Event (Session Based)
-                    $isDetailEvent = ($segment == 'detail-event');
-                    $origin = session('event_origin');
                 @endphp
 
                 <li class="bread-sep">/</li>
 
-                @if($isDetailEvent && $origin)
+                {{-- --- LOGIKA INJEKSI DINAMIS --- --}}
+
+                {{-- BERITA: Jika user membuka detail-berita DAN berasal dari 'semua-berita' --}}
+                @if($segment == 'detail-berita' && $originSource == 'semua-berita')
                     <li class="bread-item">
-                        <a href="{{ $origin['url'] }}" class="bread-link">{{ $origin['label'] }}</a>
+                        <a href="{{ url('/redaksi/berita/semua-berita') }}" class="bread-link">Semua Berita</a>
                     </li>
                     <li class="bread-sep">/</li>
                 @endif
 
+                {{-- EVENT: Jika user membuka detail-event DAN berasal dari halaman 'event-bulan-ini' --}}
+                @if($segment == 'detail-event' && $originSource == 'event-bulan-ini')
+                    <li class="bread-item">
+                        <a href="{{ url('/event-bulan-ini') }}" class="bread-link">Event Bulan Ini</a>
+                    </li>
+                    <li class="bread-sep">/</li>
+
+                {{-- EVENT: Jika user membuka detail-event DAN berasal dari halaman 'kalender-event' --}}
+                @elseif($segment == 'detail-event' && $originSource == 'kalender-event')
+                    <li class="bread-item">
+                        <a href="{{ url('/kalender-event') }}" class="bread-link">Kalender Event</a>
+                    </li>
+                    <li class="bread-sep">/</li>
+                @endif
+
+                {{-- -------------------------------- --}}
+
                 <li class="bread-item {{ $loop->last ? 'active-page' : '' }}">
                     @if($loop->last)
-                        {{-- Label Halaman Aktif --}}
+                        {{-- Halaman Aktif (Teks Saja) --}}
                         <span class="current-label">{{ $label }}</span>
                     @elseif($isDisabled)
-                        {{-- Label yang tidak bisa diklik --}}
+                        {{-- Segmen Parent yang di-disable --}}
                         <span class="disabled-label">{{ $label }}</span>
                     @else
-                        {{-- Link Biasa --}}
+                        {{-- Link Normal --}}
                         <a href="{{ url($link) }}" class="bread-link">{{ $label }}</a>
                     @endif
                 </li>
@@ -119,7 +123,10 @@
         </ol>
     </div>
 </nav>
-@endif
+@endif    
+
+
+
 
     <main>
         @yield('content')

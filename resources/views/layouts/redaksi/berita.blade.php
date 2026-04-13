@@ -16,7 +16,7 @@
             <div class="swiper headline-slider js-reveal">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <a href="redaksi/berita/detail-berita" class="slide-card">
+                        <a href="/redaksi/berita/detail-berita" class="slide-card">
                             <img src="https://picsum.photos/id/26/1000/600" alt="News 1">
                             <div class="slide-overlay">
                                 <div class="slide-overlay-inner">
@@ -27,7 +27,7 @@
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a href="redaksi/berita/detail-berita" class="slide-card">
+                        <a href="/redaksi/berita/detail-berita" class="slide-card">
                             <img src="https://picsum.photos/id/43/1000/600" alt="News 2">
                             <div class="slide-overlay">
                                 <div class="slide-overlay-inner">
@@ -38,7 +38,7 @@
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a href="redaksi/berita/detail-berita" class="slide-card">
+                        <a href="/redaksi/berita/detail-berita" class="slide-card">
                             <img src="https://picsum.photos/id/50/1000/600" alt="News 3">
                             <div class="slide-overlay">
                                 <div class="slide-overlay-inner">
@@ -52,7 +52,7 @@
             </div>
 
             <div class="news-grid js-reveal">
-                <a href="redaksi/berita/detail-berita" class="news-card js-reveal">
+                <a href="/redaksi/berita/detail-berita" class="news-card js-reveal">
                     <div class="news-img">
                         <img src="https://picsum.photos/id/10/400/250" alt="News">
                     </div>
@@ -62,7 +62,7 @@
                     </div>
                 </a>
 
-                <a href="redaksi/berita/detail-berita" class="news-card js-reveal">
+                <a href="/redaksi/berita/detail-berita" class="news-card js-reveal">
                     <div class="news-img">
                         <img src="https://picsum.photos/id/20/400/250" alt="News">
                     </div>
@@ -72,7 +72,7 @@
                     </div>
                 </a>
 
-                <a href="redaksi/berita/detail-berita" class="news-card js-reveal">
+                <a href="/redaksi/berita/detail-berita" class="news-card js-reveal">
                     <div class="news-img">
                         <img src="https://picsum.photos/id/30/400/250" alt="News">
                     </div>
@@ -82,7 +82,7 @@
                     </div>
                 </a>
 
-                <a href="redaksi/berita/detail-berita" class="news-card js-reveal">
+                <a href="/redaksi/berita/detail-berita" class="news-card js-reveal">
                     <div class="news-img">
                         <img src="https://picsum.photos/id/40/400/250" alt="News">
                     </div>
@@ -92,7 +92,7 @@
                     </div>
                 </a>
 
-                <a href="redaksi/berita/detail-berita" class="news-card js-reveal">
+                <a href="/redaksi/berita/detail-berita" class="news-card js-reveal">
                     <div class="news-img">
                         <img src="https://picsum.photos/id/50/400/250" alt="News">
                     </div>
@@ -102,7 +102,7 @@
                     </div>
                 </a>
 
-                <a href="redaksi/berita/detail-berita" class="news-card js-reveal">
+                <a href="/redaksi/berita/detail-berita" class="news-card js-reveal">
                     <div class="news-img">
                         <img src="https://picsum.photos/id/60/400/250" alt="News">
                     </div>
@@ -120,7 +120,7 @@
             </div>
             
             <div class="trending-container js-reveal">
-                <a href="redaksi/berita/detail-berita" class="trending-item js-reveal">
+                <a href="/redaksi/berita/detail-berita" class="trending-item js-reveal">
                     <div class="rank">1</div>
                     <div class="trend-content">
                         <h4>Dedi Mulyadi Nonaktifkan Kepala Samsat Soekarno-Hatta</h4>
@@ -128,7 +128,7 @@
                     </div>
                 </a>
                 
-                <a href="redaksi/berita/detail-berita" class="trending-item js-reveal">
+                <a href="/redaksi/berita/detail-berita" class="trending-item js-reveal">
                     <div class="rank">2</div>
                     <div class="trend-content">
                         <h4>BREAKING NEWS: Trump Umumkan Gencatan Senjata Global</h4>
@@ -144,7 +144,7 @@
                     </div>
                 </a>
 
-                <a href="redaksi/berita/detail-berita" class="trending-item js-reveal">
+                <a href="/redaksi/berita/detail-berita" class="trending-item js-reveal">
                     <div class="rank">4</div>
                     <div class="trend-content">
                         <h4>Harga Emas Antam Anjlok Tajam Hari Ini, Waktunya Beli?</h4>
@@ -152,7 +152,7 @@
                     </div>
                 </a>
 
-                <a href="redaksi/berita/detail-berita" class="trending-item js-reveal">
+                <a href="/redaksi/berita/detail-berita" class="trending-item js-reveal">
                     <div class="rank">5</div>
                     <div class="trend-content">
                         <h4>Persib Bandung Amankan Posisi Puncak Klasemen Sementara</h4>
@@ -160,7 +160,7 @@
                     </div>
                 </a>
 
-                <a href="redaksi/berita/detail-berita" class="trending-item js-reveal">
+                <a href="/redaksi/berita/detail-berita" class="trending-item js-reveal">
                     <div class="rank">6</div>
                     <div class="trend-content">
                         <h4>Viral! Teknologi AI Kini Bisa Deteksi Penyakit Tanaman Padi</h4>
@@ -168,7 +168,7 @@
                     </div>
                 </a>
 
-                <a href="redaksi/berita/detail-berita" class="trending-item js-reveal">
+                <a href="/redaksi/berita/detail-berita" class="trending-item js-reveal">
                     <div class="rank">7</div>
                     <div class="trend-content">
                         <h4>Menhub Cek Kesiapan Jalur Mudik Lebaran 2026</h4>
@@ -176,7 +176,7 @@
                     </div>
                 </a>
 
-                <a href="redaksi/berita/detail-berita" class="trending-item js-reveal">
+                <a href="/redaksi/berita/detail-berita" class="trending-item js-reveal">
                     <div class="rank">8</div>
                     <div class="trend-content">
                         <h4>Resep Takjil Sehat dan Murah untuk Berbuka Puasa</h4>
@@ -184,13 +184,7 @@
                     </div>
                 </a>
             </div>
-
-            <a href="/semua-berita" class="btn-more js-reveal">
-                TERPOPULER LAINNYA
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-            </a>
         </aside>
-
     </div>
 </div>
 
@@ -207,17 +201,7 @@
         <div class="warta-header-wrapper">
             <div class="header-content-left">
                 <div class="badge-accent js-reveal">Portal Informasi</div>
-                <h2 class="section-main-title js-reveal">Warta Masjid <span class="text-gradient">& Keumatan</span></h2>
-            </div>
-            
-            <div class="search-cta-box js-reveal">
-                <div class="search-input-group">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" placeholder="Cari topik dakwah..." class="search-input-field">
-                </div>
-                <button type="button" class="search-cta-button">
-                    <i class="fas fa-arrow-right"></i>
-                </button>
+                <h2 class="section-main-title js-reveal">Berita <span class="text-gradient">Terkini</span></h2>
             </div>
         </div>
 
@@ -297,7 +281,6 @@
                 @endforeach
             </div>
         </div>
-
     </div>
 </section>
 

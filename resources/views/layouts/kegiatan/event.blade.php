@@ -40,7 +40,7 @@
             <span><i class="far fa-clock"></i> 11:59 WIB</span>
             <span><i class="fas fa-map-marker-alt"></i> Jakarta</span>
           </div>
-          <a href="/kegiatan/detail-event"><button class="ev-btn-primary js-reveal">Lihat Detail</button></a>
+          <a href="{{ url('/kegiatan/detail-event?from=event-bulan-ini') }}"><button class="ev-btn-primary js-reveal">Lihat Detail</button></a>
         </div>
       </article>
 
@@ -56,7 +56,7 @@
             <span><i class="far fa-clock"></i> 08:00 WIB</span>
             <span><i class="fas fa-map-marker-alt"></i> Nasional</span>
           </div>
-          <a href="/kegiatan/detail-event"><button class="ev-btn-primary js-reveal">Lihat Detail</button></a>
+          <a href="{{ url('/kegiatan/detail-event?from=event-bulan-ini') }}"><button class="ev-btn-primary js-reveal">Lihat Detail</button></a>
         </div>
       </article>
 
@@ -72,7 +72,7 @@
             <span><i class="far fa-clock"></i> 13:00 WIB</span>
             <span><i class="fas fa-map-marker-alt"></i> Pusat</span>
           </div>
-          <a href="/kegiatan/detail-event"><button class="ev-btn-primary js-reveal">Lihat Detail</button></a>
+          <a href="{{ url('/kegiatan/detail-event?from=event-bulan-ini') }}"><button class="ev-btn-primary js-reveal">Lihat Detail</button></a>
         </div>
       </article>
 
@@ -88,7 +88,7 @@
             <span><i class="far fa-clock"></i> 11:59 WIB</span>
             <span><i class="fas fa-map-marker-alt"></i> Jakarta</span>
           </div>
-          <a href="/kegiatan/detail-event"><button class="ev-btn-primary js-reveal">Lihat Detail</button></a>
+          <a href="{{ url('/kegiatan/detail-event?from=event-bulan-ini') }}"><button class="ev-btn-primary js-reveal">Lihat Detail</button></a>
         </div>
       </article>
 
@@ -104,7 +104,7 @@
             <span><i class="far fa-clock"></i> 08:00 WIB</span>
             <span><i class="fas fa-map-marker-alt"></i> Nasional</span>
           </div>
-          <a href="/kegiatan/detail-event"><button class="ev-btn-primary js-reveal">Lihat Detail</button></a>
+          <a href="{{ url('/kegiatan/detail-event?from=event-bulan-ini') }}"><button class="ev-btn-primary js-reveal">Lihat Detail</button></a>
         </div>
       </article>
 
@@ -120,7 +120,7 @@
             <span><i class="far fa-clock"></i> 13:00 WIB</span>
             <span><i class="fas fa-map-marker-alt"></i> Pusat</span>
           </div>
-          <a href="/kegiatan/detail-event"><button class="ev-btn-primary js-reveal">Lihat Detail</button></a>
+          <a href="{{ url('/kegiatan/detail-event?from=event-bulan-ini') }}"><button class="ev-btn-primary js-reveal">Lihat Detail</button></a>
         </div>
       </article>
   </section>

@@ -320,54 +320,6 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-/* Search Box Interaktif */
-.search-cta-box {
-    display: flex;
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    padding: 6px 6px 6px 18px;
-    border-radius: 14px;
-    width: 100%;
-    max-width: 380px;
-    transition: var(--transition);
-}
-
-.search-cta-box:focus-within {
-    border-color: var(--dmi-green);
-    background: #fff;
-    box-shadow: 0 10px 25px rgba(33, 90, 40, 0.08);
-}
-
-.search-input-group {
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-    gap: 12px;
-}
-
-.search-icon { color: #94a3b8; }
-.search-input-field {
-    border: none;
-    background: transparent;
-    outline: none;
-    font-size: 0.9rem;
-    width: 100%;
-    color: var(--text-main);
-}
-
-.search-cta-button {
-    background: var(--dmi-green);
-    color: #fff;
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.search-cta-button:hover { transform: scale(1.05); }
-
 /* --- 2. BENTO GRID SYSTEM --- */
 .news-bento-grid {
     display: grid;
@@ -668,5 +620,338 @@ body {
 @media (max-width: 380px) {
     .news-bento-grid {
         grid-template-columns: 1fr; /* Balik ke 1 kolom jika layar terlalu sempit (biar gak sesak) */
+    }
+}
+
+/* ============================= */
+/*      PAGE SEMUA BERITA         */
+/* ============================= */
+/* ALL NEWS SECTION */
+.all-news-section {
+    padding: 60px 0;
+    background-color: #fff;
+}
+
+/* Header Layout: Sejajar di Desktop */
+.news-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    margin-bottom: 25px;
+}
+
+.header-left { flex: 1; }
+
+.subtitle {
+    display: block;
+    color: var(--dmi-green);
+    font-weight: 800;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.main-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #1a1a1a;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.main-title span { color: var(--dmi-green); }
+
+.header-left p {
+    color: #666;
+    margin-top: 12px;
+    max-width: 550px;
+}
+
+/* Search Box Style */
+.header-right { flex-shrink: 0; }
+
+.search-box {
+    display: flex;
+    background: #f4f7f4;
+    padding: 6px;
+    border-radius: 50px;
+    border: 2px solid transparent;
+    transition: 0.3s;
+    width: 380px;
+}
+
+.search-box:focus-within {
+    border-color: var(--dmi-green);
+    background: #fff;
+    box-shadow: 0 10px 25px rgba(0,128,0,0.08);
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 10px 18px;
+    outline: none;
+    font-size: 14px;
+}
+
+.search-box button {
+    background: var(--dmi-green);
+    color: white;
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.divider { border: none; height: 1px; background: #eee; margin: 40px 0; }
+
+/* Grid Berita 3 Kolom */
+.all-news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* Card Styling */
+.compact-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+    transition: 0.4s;
+}
+
+.compact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    border-color: var(--dmi-green);
+}
+
+.card-link { text-decoration: none; color: inherit; }
+
+.card-img {
+    position: relative;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+}
+
+.card-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.compact-card:hover .card-img img { transform: scale(1.1); }
+
+.card-tag {
+    position: absolute;
+    top: 15px; left: 15px;
+    background: var(--dmi-green);
+    color: white;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+}
+
+.card-body { padding: 25px; }
+
+.meta-info {
+    display: flex;
+    gap: 15px;
+    color: #999;
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+.card-body h3 {
+    font-size: 22px; /* Ukuran font sesuai request */
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.compact-card:hover h3 { color: var(--dmi-green); }
+
+.card-body p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.read-more {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--dmi-green);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Pagination */
+/* PAGINATION WRAPPER - Minimalis Concept */
+.pagination-wrapper {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #ffffff;
+    padding: 10px 15px;
+    border-radius: 100px;
+    /* Efek bayangan halus agar terlihat melayang */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+}
+
+/* Tombol Navigasi Panah */
+.page-nav {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--dmi-green);
+    background: #f4f7f4;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-nav:hover:not(.disabled) {
+    background: var(--dmi-green);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 128, 0, 0.2);
+}
+
+/* Container Angka */
+.page-numbers {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.page-num {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #777;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+/* State Aktif - Fokus Utama */
+.page-num.active {
+    background: var(--dmi-green);
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 128, 0, 0.3);
+}
+
+.page-num:hover:not(.active) {
+    background: #f0f0f0;
+    color: var(--dmi-green);
+}
+
+.page-dots {
+    color: #ccc;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 0 5px;
+}
+
+/* State Disabled */
+.page-nav.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    background: #eee;
+    color: #aaa;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    /* 1. Header tetap center sesuai request sebelumnya */
+    .news-page-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+
+    /* 2. Grid tetap 1 kolom tapi dengan gaya compact */
+    .all-news-grid {
+        grid-template-columns: 1fr;
+        gap: 15px; /* Jarak antar card dipersempit */
+    }
+
+    /* 4. Tipografi yang lebih padat */
+    .card-body h3 {
+        font-size: 15px; /* Font lebih kecil agar compact */
+        margin-bottom: 5px;
+        line-height: 1.2;
+        -webkit-line-clamp: 2; /* Maksimal 2 baris saja */
+    }
+
+    .meta-info {
+        font-size: 10px;
+        margin-bottom: 5px;
+        gap: 10px;
+    }
+
+    /* 5. Pagination yang lebih kecil */
+    .pagination-wrapper {
+        margin-top: 30px;
+    }
+    
+    .pagination-container {
+        gap: 10px;
+        padding: 8px 10px;
+    }
+
+    .page-nav {
+        width: 40px;
+        height: 40px;
+    }
+
+    .page-num {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    /* Sembunyikan beberapa angka di mobile agar tetap 1 baris */
+    .page-num:nth-child(3), 
+    .page-dots {
+        display: none;
+    }
+}   
+
+/* Tambahan untuk layar sangat kecil agar teks tidak terlalu raksasa */
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 28px;
+    }
+    
+    .subtitle {
+        font-size: 11px;
     }
 }

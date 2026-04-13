@@ -41,4 +41,5 @@ Route::get('/kegiatan/detail-event',[KegiatanController::class, 'detail']);
 
 Route::get('/redaksi/berita',[BeritaController::class, 'berita']); 
 Route::get('/redaksi/berita/detail-berita',[BeritaController::class, 'berita2']);
+Route::get('/redaksi/berita/semua-berita',[BeritaController::class, 'berita3']);
 Route::get('/redaksi/susunan-redaksi',[RedaksiController::class, 'susunanredaksi']); 

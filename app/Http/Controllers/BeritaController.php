@@ -14,4 +14,8 @@ class BeritaController extends Controller
     {
         return view ('layouts/redaksi/detailberita');
     }
+    public function berita3()
+    {
+        return view ('layouts/redaksi/semua-berita');
+    }
 }

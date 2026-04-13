@@ -86,7 +86,7 @@
                     <p><i class="far fa-clock"></i> <span id="event-time">11:59 WIB</span></p>
                     <p><i class="fas fa-map-marker-alt"></i> <span id="event-location">Gedung DMI Pusat</span></p>
                     </div>
-                    <a href="/kegiatan/detail-event"><button class="btn-sel-detail">Lihat Detail Agenda</button></a>
+                    <a href="{{ url('/kegiatan/detail-event?from=kalender-event') }}"><button class="btn-sel-detail">Lihat Detail Agenda</button></a>
                 </div>
                 </div>
             </div>
