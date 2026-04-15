@@ -1,6 +1,6 @@
       <!-- Navbar -->
 
-    <link rel="stylesheet" href="{{ asset('css/pengurus.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tentang-kami.css') }}">
 
   @extends('layouts.app')
     @section('content')

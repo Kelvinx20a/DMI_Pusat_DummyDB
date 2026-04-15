@@ -1,4 +1,5 @@
     <link rel="stylesheet" href="{{ asset('css/kegiatan.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/berita.css') }}">
  
  
  @extends('layouts.app')
@@ -6,34 +7,32 @@
 
 <section class="ev-full-viewport">
   <div class="ev-container">
-    <header class="ev-top-header">
-      <div class="ev-title-group js-reveal">
-        <span class="ev-sup-title">Agenda Utama</span>
-        <h1 class="ev-h1">Event Bulan Ini</h1>
-      </div>
+    <div class="news-page-header" style="margin: 60px 0;">
+            <div class="header-left">
+                <h1 class="main-title" style="margin-bottom: 10px;">Event Bulan <span>Ini</span></h1>
+            </div>
 
-      <div class="ev-action-bar js-reveal">
-        <nav class="ev-nav-filters">
-          <button class="ev-tab active">Semua</button>
-          <button class="ev-tab">Kajian</button>
-          <button class="ev-tab">Sosial</button>
-          <button class="ev-tab">Rapat Pleno</button>
-        </nav>
-        <div class="ev-search-premium">
-          <i class="fas fa-search"></i>
-          <input type="text" placeholder="Cari kegiatan...">
-        </div>
-      </div>
-    </header>
+            <div class="header-right">
+                <form class="search-box">
+                    <input type="text" placeholder="Cari topik berita..." aria-label="Search">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>          
+        
+        <hr class="divider">
+
 
     <main class="ev-main-grid">
       
-      <article class="ev-card">
+      <article class="ev-card js-reveal">
         <div class="ev-img-box js-reveal">
           <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=400&h=300&auto=format&fit=crop" alt="Kajian">
           <div class="ev-date-tag">Kajian</div>
         </div>
-        <div class="ev-card-body">
+        <div class="ev-card-body js-reveal">
           <h3 class="ev-item-title js-reveal">Grand Islamic Gathering</h3>
           <p class="ev-item-text js-reveal">Penguatan ekonomi berbasis masjid untuk kesejahteraan jamaah di era modern.</p>
           <div class="ev-item-meta js-reveal">
@@ -44,7 +43,7 @@
         </div>
       </article>
 
-      <article class="ev-card">
+      <article class="ev-card js-reveal">
         <div class="ev-img-box js-reveal">
           <img src="https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&q=80&w=400&h=300" alt="Sosial">
           <div class="ev-date-tag">Sosial</div>
@@ -60,7 +59,7 @@
         </div>
       </article>
 
-      <article class="ev-card">
+      <article class="ev-card js-reveal">
         <div class="ev-img-box js-reveal">
           <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=1200&auto=format&fit=crop" alt="Pleno">
           <div class="ev-date-tag">Rapat Pleno</div>
@@ -76,7 +75,7 @@
         </div>
       </article>
 
-      <article class="ev-card">
+      <article class="ev-card js-reveal">
         <div class="ev-img-box js-reveal">
           <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=400&h=300&auto=format&fit=crop" alt="Kajian">
           <div class="ev-date-tag">Kajian</div>
@@ -92,7 +91,7 @@
         </div>
       </article>
 
-      <article class="ev-card">
+      <article class="ev-card js-reveal">
         <div class="ev-img-box js-reveal">
           <img src="https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&q=80&w=400&h=300" alt="Sosial">
           <div class="ev-date-tag">Sosial</div>
@@ -108,7 +107,7 @@
         </div>
       </article>
 
-      <article class="ev-card">
+      <article class="ev-card js-reveal">
         <div class="ev-img-box js-reveal">
           <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=1200&auto=format&fit=crop" alt="Pleno">
           <div class="ev-date-tag">Rapat Pleno</div>

@@ -16,7 +16,6 @@
                 <div class="main-training-card">
                     <img src="../img/proker/kemasjidan/1.png" alt="Pelatihan Manajemen Masjid">
                     <div class="training-overlay-info">
-                        <span class="live-tag"><i class="fas fa-circle"></i> Sesi Berlangsung</span>
                         <h3>Pelatihan Manajemen Strategis Masjid</h3>
                         <p><i class="fas fa-map-marker-alt"></i> Pusat Pendidikan DMI, Jakarta</p>
                     </div>

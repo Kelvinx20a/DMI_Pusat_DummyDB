@@ -93,14 +93,14 @@
                 {{-- EVENT: Jika user membuka detail-event DAN berasal dari halaman 'event-bulan-ini' --}}
                 @if($segment == 'detail-event' && $originSource == 'event-bulan-ini')
                     <li class="bread-item">
-                        <a href="{{ url('/event-bulan-ini') }}" class="bread-link">Event Bulan Ini</a>
+                        <a href="{{ url('/kegiatan/event-bulan-ini') }}" class="bread-link">Event Bulan Ini</a>
                     </li>
                     <li class="bread-sep">/</li>
 
                 {{-- EVENT: Jika user membuka detail-event DAN berasal dari halaman 'kalender-event' --}}
                 @elseif($segment == 'detail-event' && $originSource == 'kalender-event')
                     <li class="bread-item">
-                        <a href="{{ url('/kalender-event') }}" class="bread-link">Kalender Event</a>
+                        <a href="{{ url('/kegiatan/kalender-event') }}" class="bread-link">Kalender Event</a>
                     </li>
                     <li class="bread-sep">/</li>
                 @endif

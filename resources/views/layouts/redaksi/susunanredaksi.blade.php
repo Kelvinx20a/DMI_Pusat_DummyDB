@@ -68,7 +68,7 @@
             <span>Redaktur</span>
         </div>
 
-        <div class="members-flex-container2">
+        <div class="members-flex-container2 js-reveal">
             @php
                 $editorial = [
                     'Gatot Widakdo', 'Rony Armes',
@@ -104,7 +104,7 @@
             @endphp
 
             @foreach($editorial as $name)
-            <div class="card-member-minimal">
+            <div class="card-member-minimal js-reveal">
                 <div class="member-avatar-box">
                     <i class="fas fa-user-circle"></i>
                 </div>
@@ -124,7 +124,7 @@
             <span>Fotografer/Videografer</span>
         </div>
 
-        <div class="members-flex-container2">
+        <div class="members-flex-container2 js-reveal">
             @php
                 $editorial = [
                     'Ishak', 'Muhammad Zen',
@@ -132,7 +132,7 @@
             @endphp
 
             @foreach($editorial as $name)
-            <div class="card-member-minimal">
+            <div class="card-member-minimal js-reveal">
                 <div class="member-avatar-box">
                     <i class="fas fa-user-circle"></i>
                 </div>
@@ -147,11 +147,11 @@
         <br>
         <br>
         <br>
-        <div class="section-label">
+        <div class="section-label js-reveal">
             <span>Sosial Media</span>
         </div>
 
-        <div class="members-flex-container2">
+        <div class="members-flex-container2 js-reveal">
             @php
                 $editorial = [
                     'Gita Permata', 'Shinta Lestari',
@@ -159,7 +159,7 @@
             @endphp
 
             @foreach($editorial as $name)
-            <div class="card-member-minimal">
+            <div class="card-member-minimal js-reveal">
                 <div class="member-avatar-box">
                     <i class="fas fa-user-circle"></i>
                 </div>
@@ -171,8 +171,8 @@
 </section>
 
 <section class="team-section js-reveal">
-    <div class="team-container">
-        <div class="team-column">
+    <div class="team-container js-reveal">
+        <div class="team-column js-reveal">
             <h2 class="role-title">Editor</h2>
             <div class="member-card">
                 <div class="icon-wrapper">
@@ -181,9 +181,9 @@
             </div>
         </div>
 
-        <div class="team-column">
+        <div class="team-column js-reveal">
             <h2 class="role-title">IT</h2>
-            <div class="member-card">
+            <div class="member-card js-reveal">
                 <div class="icon-wrapper">
                     <i class="fas fa-user-circle"></i>
                 </div>

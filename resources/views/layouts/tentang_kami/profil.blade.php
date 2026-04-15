@@ -1,5 +1,5 @@
 
-    <link rel="stylesheet" href="{{ asset('css/profil.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tentang-kami.css') }}">
   <!-- Navbar -->
   @extends('layouts.app')
     @section('content')

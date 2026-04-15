@@ -8,15 +8,13 @@
 
 <section class="all-news-section">
     <div class="container">
-        <div class="news-page-header">
-            <div class="header-left">
-                <span class="subtitle">Lensa</span>
-                <h1 class="main-title">Eksplorasi Berita <span>DMI</span></h1>
-                <p>Arsip lengkap informasi dan laporan mendalam dari berbagai penjuru dunia dalam genggaman Anda.</p>
+        <div class="news-page-header js-reveal">
+            <div class="header-left js-reveal">
+                <h1 class="main-title" style="margin-bottom: 10px;">Eksplorasi <span>Berita</span></h1>
             </div>
             
-            <div class="header-right">
-                <form class="search-box">
+            <div class="header-right js-reveal">
+                <form class="search-box js-reveal">
                     <input type="text" placeholder="Cari topik berita..." aria-label="Search">
                     <button type="submit">
                         <i class="fas fa-search"></i>
@@ -25,17 +23,17 @@
             </div>
         </div>
 
-        <hr class="divider">
+        <hr class="divider js-reveal">
 
         <div class="all-news-grid">
             
-            <article class="compact-card">
-                <a href="{{ url('/redaksi/berita/detail-berita?from=semua-berita') }}" class="card-link">
-                    <div class="card-img">
+            <article class="compact-card js-reveal">
+                <a href="{{ url('/redaksi/berita/detail-berita?from=semua-berita') }}" class="card-link js-reveal">
+                    <div class="card-img js-reveal">
                         <img src="https://picsum.photos/id/1/400/250" alt="News">
                         <span class="card-tag">Nasional</span>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body js-reveal">
                         <div class="meta-info">
                             <span><i class="far fa-calendar-alt"></i> 10 Apr 2026</span>
                             <span><i class="far fa-clock"></i> 5 mnt</span>
@@ -47,13 +45,13 @@
                 </a>
             </article>
 
-            <article class="compact-card">
-                <a href="{{ url('/redaksi/berita/detail-berita?from=semua-berita') }}" class="card-link">
-                    <div class="card-img">
+            <article class="compact-card js-reveal">
+                <a href="{{ url('/redaksi/berita/detail-berita?from=semua-berita') }}" class="card-link js-reveal">
+                    <div class="card-img js-reveal">
                         <img src="https://picsum.photos/id/20/400/250" alt="News">
                         <span class="card-tag">Ekonomi</span>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body js-reveal">
                         <div class="meta-info">
                             <span><i class="far fa-calendar-alt"></i> 10 Apr 2026</span>
                             <span><i class="far fa-clock"></i> 4 mnt</span>
@@ -65,13 +63,13 @@
                 </a>
             </article>
 
-            <article class="compact-card">
-                <a href="{{ url('/redaksi/berita/detail-berita?from=semua-berita') }}" class="card-link">
-                    <div class="card-img">
+            <article class="compact-card js-reveal">
+                <a href="{{ url('/redaksi/berita/detail-berita?from=semua-berita') }}" class="card-link js-reveal">
+                    <div class="card-img js-reveal">
                         <img src="https://picsum.photos/id/26/400/250" alt="News">
                         <span class="card-tag">Internasional</span>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body js-reveal">
                         <div class="meta-info">
                             <span><i class="far fa-calendar-alt"></i> 09 Apr 2026</span>
                             <span><i class="far fa-clock"></i> 6 mnt</span>
@@ -83,13 +81,13 @@
                 </a>
             </article>
 
-            <article class="compact-card">
-                <a href="{{ url('/redaksi/berita/detail-berita?from=semua-berita') }}" class="card-link">
-                    <div class="card-img">
+            <article class="compact-card js-reveal">
+                <a href="{{ url('/redaksi/berita/detail-berita?from=semua-berita') }}" class="card-link js-reveal">
+                    <div class="card-img js-reveal">
                         <img src="https://picsum.photos/id/30/400/250" alt="News">
                         <span class="card-tag">Teknologi</span>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body js-reveal">
                         <div class="meta-info">
                             <span><i class="far fa-calendar-alt"></i> 09 Apr 2026</span>
                             <span><i class="far fa-clock"></i> 3 mnt</span>
@@ -101,13 +99,13 @@
                 </a>
             </article>
 
-            <article class="compact-card">
-                <a href="{{ url('/redaksi/berita/detail-berita?from=semua-berita') }}" class="card-link">
-                    <div class="card-img">
+            <article class="compact-card js-reveal">
+                <a href="{{ url('/redaksi/berita/detail-berita?from=semua-berita') }}" class="card-link js-reveal">
+                    <div class="card-img js-reveal">
                         <img src="https://picsum.photos/id/42/400/250" alt="News">
                         <span class="card-tag">Regional</span>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body js-reveal">
                         <div class="meta-info">
                             <span><i class="far fa-calendar-alt"></i> 08 Apr 2026</span>
                             <span><i class="far fa-clock"></i> 4 mnt</span>
@@ -119,13 +117,13 @@
                 </a>
             </article>
 
-            <article class="compact-card">
-                <a href="{{ url('/redaksi/berita/detail-berita?from=semua-berita') }}" class="card-link">
-                    <div class="card-img">
+            <article class="compact-card js-reveal">
+                <a href="{{ url('/redaksi/berita/detail-berita?from=semua-berita') }}" class="card-link js-reveal">
+                    <div class="card-img js-reveal">
                         <img src="https://picsum.photos/id/48/400/250" alt="News">
                         <span class="card-tag">Kesehatan</span>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body js-reveal">
                         <div class="meta-info">
                             <span><i class="far fa-calendar-alt"></i> 08 Apr 2026</span>
                             <span><i class="far fa-clock"></i> 5 mnt</span>
@@ -137,13 +135,13 @@
                 </a>
             </article>
 
-            <article class="compact-card">
-                <a href="{{ url('/redaksi/berita/detail-berita?from=semua-berita') }}" class="card-link">
-                    <div class="card-img">
+            <article class="compact-card js-reveal">
+                <a href="{{ url('/redaksi/berita/detail-berita?from=semua-berita') }}" class="card-link js-reveal">
+                    <div class="card-img js-reveal">
                         <img src="https://picsum.photos/id/60/400/250" alt="News">
                         <span class="card-tag">Olahraga</span>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body js-reveal">
                         <div class="meta-info">
                             <span><i class="far fa-calendar-alt"></i> 07 Apr 2026</span>
                             <span><i class="far fa-clock"></i> 3 mnt</span>
@@ -155,13 +153,13 @@
                 </a>
             </article>
 
-            <article class="compact-card">
-                <a href="{{ url('/redaksi/berita/detail-berita?from=semua-berita') }}" class="card-link">
-                    <div class="card-img">
+            <article class="compact-card js-reveal">
+                <a href="{{ url('/redaksi/berita/detail-berita?from=semua-berita') }}" class="card-link js-reveal">
+                    <div class="card-img js-reveal">
                         <img src="https://picsum.photos/id/50/400/250" alt="News">
                         <span class="card-tag">Edukasi</span>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body js-reveal">
                         <div class="meta-info">
                             <span><i class="far fa-calendar-alt"></i> 07 Apr 2026</span>
                             <span><i class="far fa-clock"></i> 7 mnt</span>
@@ -173,13 +171,13 @@
                 </a>
             </article>
 
-            <article class="compact-card">
-                <a href="{{ url('/redaksi/berita/detail-berita?from=semua-berita') }}" class="card-link">
-                    <div class="card-img">
+            <article class="compact-card js-reveal">
+                <a href="{{ url('/redaksi/berita/detail-berita?from=semua-berita') }}" class="card-link js-reveal">
+                    <div class="card-img js-reveal">
                         <img src="https://picsum.photos/id/55/400/250" alt="News">
                         <span class="card-tag">Gaya Hidup</span>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body js-reveal">
                         <div class="meta-info">
                             <span><i class="far fa-calendar-alt"></i> 06 Apr 2026</span>
                             <span><i class="far fa-clock"></i> 4 mnt</span>
@@ -193,13 +191,13 @@
 
         </div>
 
-            <nav class="pagination-wrapper">
-                    <div class="pagination-container">
+            <nav class="pagination-wrapper js-reveal">
+                    <div class="pagination-container js-reveal">
                         <a href="#" class="page-nav prev disabled" title="Previous">
                             <i class="fas fa-arrow-left"></i>
                         </a>
             
-                    <div class="page-numbers">
+                    <div class="page-numbers js-reveal">
                         <a href="#" class="page-num active">1</a>
                         <a href="#" class="page-num">2</a>
                         <a href="#" class="page-num">3</a>
@@ -207,7 +205,7 @@
                         <a href="#" class="page-num">12</a>
                     </div>
 
-                    <a href="#" class="page-nav next" title="Next">
+                    <a href="#" class="page-nav next js-reveal" title="Next">
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>

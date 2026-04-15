@@ -16,7 +16,7 @@
         <div class="pdk-info-grid">
             
             <article class="pdk-info-card">
-                <div class="pdk-image-box">
+                    <div class="pdk-image-box">
                     <img src="../img/proker/program-pendidikan-dan-dakwah/1.png" alt="Pendidikan Anak" class="pdk-img js-reveal">
                     <div class="pdk-mobile-label js-reveal">Pendidikan</div>
                 </div>
