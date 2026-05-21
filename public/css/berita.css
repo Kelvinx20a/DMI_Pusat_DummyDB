@@ -628,7 +628,7 @@ body {
 /* ============================= */
 /* ALL NEWS SECTION */
 .all-news-section {
-    padding: 60px 0;
+    padding: 10px 0;
     background-color: #fff;
 }
 
@@ -889,6 +889,9 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+    .all-news-section {
+        padding: 20px 0px;
+    }
     /* 1. Header tetap center sesuai request sebelumnya */
     .news-page-header {
         flex-direction: column;

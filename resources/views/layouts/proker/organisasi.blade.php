@@ -5,8 +5,15 @@
     <section class="dmi-modern-org">
     <div class="container-custom">
         <div class="org-intro js-reveal">
-            <div class="badge-accent">Penataan Organisasi</div>
-            <h2 class="section-title-main">Transformasi Tata Kelola <span class="text-success">DMI</span></h2>
+            <center>
+                <div class="badge-accent">
+                    <i class="fas fa-users"></i>
+                    <span>Penataan Organisasi</span>
+                </div>
+            </center>
+            <h2 class="section-title-main">Transformasi  <span class="text-success">Tata Kelola DMI</span></h2>
+            <p class="mbs-subtitle">Penyelarasan struktur organisasi demi pelayanan umat yang lebih responsif dan profesional.</p>
+            <center>
             
             <center>
                 <div class="title-divider"></div>

@@ -4,7 +4,10 @@
     <section class="religi-section">
     <div class="religi-container">
         <header class="religi-header">
-            <span class="religi-tag">EKSPLORASI BUDAYA</span>
+            <div class="religi-badge">
+                <i class="fas fa-compass"></i>
+                <span>EKSPLORASI BUDAYA</span>
+            </div>
             <h1 class="religi-title">Wisata <span class="religi-gold">Religi</span></h1>
             <p class="religi-subtitle">Menelusuri jejak sejarah dan keagungan arsitektur Islam di nusantara.</p>
             <div class="religi-line"></div>

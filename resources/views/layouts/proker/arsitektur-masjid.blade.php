@@ -5,9 +5,16 @@
     <div class="arch-container">
         
         <header class="arch-main-header">
-            <div class="arch-tag">LAPORAN DIVISI PEMBANGUNAN</div>
+            <div class="arch-badge">
+                <i class="fas fa-file-alt"></i>
+                <span>LAPORAN DIVISI PEMBANGUNAN</span>
+            </div>
             <h1 class="arch-title">Arsitektur <span class="arch-highlight">Masjid DMI</span></h1>
-            <div class="arch-divider"></div>
+            <p class="mbs-subtitle">Standarisasi desain arsitektur yang mengedepankan nilai filosofis, kenyamanan, dan kearifan lokal.</p>
+            
+            <center>
+                <div class="title-divider"></div>
+            </center>
         </header>
 
         <article class="arch-project-card">

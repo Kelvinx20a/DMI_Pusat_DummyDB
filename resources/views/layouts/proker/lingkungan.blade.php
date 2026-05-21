@@ -3,9 +3,16 @@
 
     <section class="eco-simple-v5">
     <div class="container-lite">
-        <div class="eco-head js-reveal">
-            <span class="tag-hijau">ENVIRONMENTAL</span>
-            <h2 class="title-main">Program Masjid Hijau</h2>
+       <div class="eco-head js-reveal">
+            <div class="green-badge">
+                <i class="fas fa-leaf"></i>
+                <span class="tag-hijau">EKOSISTEM</span>
+            </div>
+            <h2 class="title-main">Program <span class="text-success">Masjid Hijau</span></h2>
+            <center>
+                <p class="mbs-subtitle" style="width: 100%;">Mewujudkan masjid asri dan mandiri energi melalui pengelolaan sumber daya yang bijak.</p>
+            </center>
+            <br>
             <div class="line-short"></div>
         </div>
 

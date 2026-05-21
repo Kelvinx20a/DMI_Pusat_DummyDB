@@ -5,8 +5,13 @@
     <div class="mrj-container">
         
         <div class="mrj-header js-reveal">
-            <span class="mrj-tag">Program Strategis DMI</span>
-            <h2 class="mrj-title">Masjid Ramah <span>Jamaah</span></h2>
+            <div class="mrj-badge-top">
+                <i class="fas fa-hand-holding-heart"></i>
+                <span class="mrj-tag">INKLUSIVITAS</span>
+            </div>
+            
+            <h2 class="mrj-title">Masjid <span>Ramah Jamaah</span></h2>
+            <p class="mbs-subtitle">Menciptakan ruang ibadah yang nyaman, aksesibel, dan inklusif bagi seluruh lapisan masyarakat.</p>
             <center>
             <div class="title-divider" style="margin-left: 0;"></div>
             </center>

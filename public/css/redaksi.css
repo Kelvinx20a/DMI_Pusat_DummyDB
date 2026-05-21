@@ -307,6 +307,7 @@
 
 /* Tambahan khusus untuk layar sangat kecil (di bawah 360px) */
 @media (max-width: 360px) {
+    
     .team-container {
         gap: 10px;
     }
@@ -324,9 +325,12 @@
 
 /* KUNCI PERUBAHAN MOBILE */
 @media (max-width: 768px) {
+    .redaksi-section {
+        padding: 30px 10px;
+    }
     /* Header Header diperkecil agar tidak memakan ruang */
     .main-title { font-size: 1.4rem; }
-    .sub-title { font-size: 1rem; }
+    .sub-title { font-size: 0.9rem; }
     .period-badge { padding: 6px 20px; font-size: 0.75rem; }
 
     /* Executive Section: Jadi 2 Grid Berdampingan */

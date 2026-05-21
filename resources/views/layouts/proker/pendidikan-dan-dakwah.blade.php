@@ -7,16 +7,24 @@
     <section class="pdk-clean-info">
     <div class="pdk-container">
         
-        <header class="pdk-header js-reveal" >
-            <span class="pdk-tagline">DEDIKASI UNTUK UMMAT</span>
-            <h1 class="pdk-main-title">Pendidikan & Dakwah</h1>
-            <div class="pdk-accent-line"></div>
+        <header class="pdk-header js-reveal" > 
+            <center>   
+                <div class="pdk-badge">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="pdk-tagline">DEDIKASI UNTUK UMMAT</span>
+                </div>
+            </center>
+            <h1 class="pdk-main-title">Pendidikan <span class="text-success">& Dakwah</span></h1>
+            <p class="mbs-subtitle">Program pengembangan ilmu dan penyebaran nilai positif bagi kemajuan umat.</p>
+            <center>
+                <div class="title-divider"></div>
+            </center>
         </header>
 
         <div class="pdk-info-grid">
             
             <article class="pdk-info-card">
-                    <div class="pdk-image-box">
+                <div class="pdk-image-box">
                     <img src="../img/proker/program-pendidikan-dan-dakwah/1.png" alt="Pendidikan Anak" class="pdk-img js-reveal">
                     <div class="pdk-mobile-label js-reveal">Pendidikan</div>
                 </div>

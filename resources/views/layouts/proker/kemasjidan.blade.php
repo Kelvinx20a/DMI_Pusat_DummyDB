@@ -6,8 +6,13 @@
 <section class="dmi-training-section">
     <div class="container-custom">
         <div class="training-header js-reveal">
-            <div class="badge-accent">Pusat Pendidikan & Pelatihan</div>
+            <div class="badge-accent">
+                <i class="fas fa-graduation-cap"></i>    
+                <span>Pusat Pendidikan & Pelatihan</span>
+            </div>
             <h2 class="section-title-main">Program Pelatihan <span class="text-success">Fungsi Kemasjidan</span></h2>
+            <p class="mbs-subtitle">Memberdayakan fungsi strategis masjid sebagai pusat edukasi, sosial, dan ekonomi umat melalui program pelatihan yang komprehensif dan berkelanjutan.</p> 
+    
             <div class="title-divider" style="margin-left: 0;"></div>
         </div>
 

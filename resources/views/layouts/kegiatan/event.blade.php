@@ -7,7 +7,7 @@
 
 <section class="ev-full-viewport">
   <div class="ev-container">
-    <div class="news-page-header" style="margin: 60px 0;">
+    <div class="news-page-header">
             <div class="header-left">
                 <h1 class="main-title" style="margin-bottom: 10px;">Event Bulan <span>Ini</span></h1>
             </div>

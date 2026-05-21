@@ -6,9 +6,14 @@
     <div class="mbs-container">
         
         <div class="mbs-header js-reveal">
-            <span class="mbs-badge">Kesehatan & Kebersihan</span>
+
+            <span class="mbs-badge"><i class="fas fa-hand-holding-heart"></i> Kesehatan & Kebersihan</span>
             <h2 class="mbs-title">Masjid <span>Bersih dan Sehat</span></h2>
             <p class="mbs-subtitle">Mewujudkan ekosistem ibadah yang higienis melalui standarisasi kebersihan masjid di seluruh Indonesia.</p>
+            <center>
+                <div class="title-divider"></div>
+            </center>
+
         </div>
 
         <div class="mbs-main-layout">
@@ -17,13 +22,7 @@
                 <div class="mbs-banner-wrapper">
                     <img src="../img/proker/bersih1.png" alt="Penyerahan Produk Kebersihan" class="mbs-banner-img">
                     
-                    <div class="mbs-floating-info">
-                        <div class="info-icon"><i class="fas fa-hand-holding-heart"></i></div>
-                        <div>
-                            <h4>Gerakan Masjid Bersih</h4>
-                            <p>Kolaborasi Strategis DMI</p>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
 

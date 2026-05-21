@@ -288,11 +288,7 @@
     width: 95%; /* Lebih lebar sedikit agar ruang grid maksimal */
   }
 
-  .ev-action-bar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 15px;
-  }
+  
 
   .ev-main-grid {
     grid-template-columns: repeat(2, 1fr); /* Paksa 3 kolom */
@@ -375,7 +371,7 @@
 
 .cal-section {
   width: 100%;
-  padding: clamp(40px, 2vw, 80px) 0;
+  padding: clamp(20px, 2vw, 80px) 0;
   background-color: var(--white);
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
@@ -460,7 +456,7 @@
   align-items: center;
   gap: 10px;
   padding: 0 15px;
-  min-width: 160px;
+  min-width: 300px;
   justify-content: center;
 }
 
@@ -721,9 +717,26 @@
 }
 
 @media (max-width: 600px) {
+  .cal-section{
+    padding: 20px 0;
+  }
   .cal-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     flex-direction: column;
-    align-items: flex-start;
+  }
+  .cal-title-wrapper {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    gap: 8px;
+
+  }
+  .cal-label{
+    display: flex;
+    justify-content: center;
   }
   .cal-controls {
     width: 100%;

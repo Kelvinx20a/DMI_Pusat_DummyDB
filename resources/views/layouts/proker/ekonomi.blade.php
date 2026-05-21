@@ -6,7 +6,11 @@
         <div class="eco-layout-wrapper">
             
             <div class="eco-content js-reveal">
-                <div class="badge-accent">Pilar Kesejahteraan</div>
+                <div class="eco-badge">
+                    <i class="fas fa-hand-holding-usd eco-badge-icon"></i>
+                    <span>Pilar Kesejahteraan</span>
+                </div>
+                
                 <h2 class="section-title-main">Pengembangan <span class="text-success">Ekonomi & Sosial</span></h2>
                 <p class="eco-lead">Membangun kemandirian umat melalui pemberdayaan ekonomi berbasis masjid dan penguatan jaring pengaman sosial yang inklusif.</p>
                 
