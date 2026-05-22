@@ -115,13 +115,7 @@
 
                         <!-- Preview -->
                         <td>
-                            @if($post->post_status === 'publish')
-                                <a href="{{ route('redaksi.berita.detail', $post->ID) }}" target="_blank" class="text-muted text-decoration-none">
-                                    {{ Str::limit(strip_tags($post->post_content), 60) }}
-                                </a>
-                            @else
-                                <small class="text-muted">{{ Str::limit(strip_tags($post->post_content), 60) }}</small>
-                            @endif
+                            <span class="fw-bold text-dark">{{ Str::limit(strip_tags($post->post_content), 60) }}</span>
                         </td>
 
                         <!-- Author -->
