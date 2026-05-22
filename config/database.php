@@ -63,6 +63,18 @@ return [
             ]) : [],
         ],
 
+        'wordpress' => [
+            'driver' => 'mysql',
+            'host' => env('WORDPRESS_DB_HOST', env('DB_HOST', '127.0.0.1')),
+            'port' => env('WORDPRESS_DB_PORT', env('DB_PORT', '3306')),
+            'database' => env('WORDPRESS_DB_DATABASE', 'db_dmi'),
+            'username' => env('WORDPRESS_DB_USERNAME', env('DB_USERNAME', 'root')),
+            'password' => env('WORDPRESS_DB_PASSWORD', env('DB_PASSWORD', '')),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+        ],
+
         'mariadb' => [
             'driver' => 'mariadb',
             'url' => env('DB_URL'),

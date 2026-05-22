@@ -13,14 +13,14 @@
             
             <article class="news-main-content">
                 <header class="news-header js-reveal">
-                    <nav class="breadcrumb">Berita &bull; Program Masjid</nav>
-                    <h1 class="news-title">Program Penataan Akustik Masjid: Meningkatkan Kualitas Ibadah Melalui Suara</h1>
+                    <nav class="breadcrumb">Berita &bull; {{ $post->frontend_category }}</nav>
+                    <h1 class="news-title">{{ $post->post_title }}</h1>
                     <div class="editorial-meta js-reveal">
                         <div class="author-info">
                         <img src="{{ asset('../img/components/user.png') }}" alt="Muhammad Ibrahim" class="author-img">
                     <div class="author-text js-reveal">
-                        <span class="name">Muhammad Ibrahim Hamdani</span>
-                        <span class="date">21 Februari 2024 • 5 mnt baca</span>
+                        <span class="name">{{ $post->frontend_author }}</span>
+                        <span class="date">{{ \Carbon\Carbon::parse($post->post_date)->translatedFormat('d F Y') }} • {{ $post->frontend_reading_time }} mnt baca</span>
                     </div>
                 </div>
                 <div class="editorial-actions js-reveal">
@@ -31,27 +31,20 @@
                 </header>
 
                 <div class="news-featured-image js-reveal">
-                    <img src="https://picsum.photos/id/1018/1200/800" alt="Penataan Akustik Masjid">
-                    <p class="caption">Dokumentasi kegiatan edukasi singkat penataan akustik di Gedung DMI Pusat.</p>
+                    <img src="{{ $post->frontend_image }}" alt="{{ $post->post_title }}">
+                    @if($post->post_excerpt)
+                        <p class="caption">{{ $post->post_excerpt }}</p>
+                    @endif
                 </div>
 
                 <div class="news-body-text js-reveal">
-                    <p><strong>JAKARTA</strong> - Pimpinan Pusat (PP) Dewan Masjid Indonesia (DMI) bekerja sama dengan Direktorat Urusan Agama Islam dan Pembinaan Syariah Kementerian Agama menggelar program edukasi penataan akustik.</p>
-                    
-                    <p>Kegiatan ini merupakan bagian dari agenda pra-Muktamar VIII DMI. Fokus utama adalah memberikan pelatihan bagi 50 peserta takmir masjid dari wilayah Jabodetabek agar sistem audio masjid menjadi lebih jernih dan informatif.</p>
-                    
-                    <blockquote>
-                        "Penataan akustik bukan sekadar teknis, tapi tentang kenyamanan jamaah dalam menyerap pesan-pesan kebaikan."
-                    </blockquote>
-
-                    <p>Acara ini resmi dibuka oleh Sekretaris Jenderal PP DMI, Dr. H. Imam Addaruqutni, M.Ag. Beliau menekankan pentingnya infrastruktur audio dalam mendukung syiar Islam di era modern.</p>
+                    {!! $post->post_content !!}
                 </div>
 
                 <footer class="news-tags js-reveal">
-                    <a href="#" class="tag">DMI</a>
-                    <a href="#" class="tag">Masjid</a>
-                    <a href="#" class="tag">Akustik</a>
-                    <a href="#" class="tag">Edukasi</a>
+                    @foreach($post->frontend_tags as $tag)
+                        <a href="{{ route('redaksi.berita.semua', ['search' => $tag]) }}" class="tag">{{ $tag }}</a>
+                    @endforeach
                 </footer>
             </article>
 
@@ -61,39 +54,18 @@
             <div class="sidebar-section">
                 <h3 class="section-heading">Berita Terpopuler</h3>
                 <div class="popular-cards">
-                    
-                    <a href="#" class="pop-card">
-                        <div class="pop-card-img">
-                            <img src="https://picsum.photos/id/1015/200/200" alt="News">
-                        </div>
-                        <div class="pop-card-content">
-                            <span class="category">Infrastruktur</span>
-                            <h4>Edukasi Singkat Penataan Akustik Masjid Jabodetabek</h4>
-                            <span class="date">11 Maret 2026</span>
-                        </div>
-                    </a>
-
-                    <a href="#" class="pop-card">
-                        <div class="pop-card-img">
-                            <img src="https://picsum.photos/id/1016/200/200" alt="News">
-                        </div>
-                        <div class="pop-card-content">
-                            <span class="category">Keuangan</span>
-                            <h4>Optimalisasi Zakat Digital untuk Kemakmuran Jamaah</h4>
-                            <span class="date">09 Maret 2026</span>
-                        </div>
-                    </a>
-
-                    <a href="#" class="pop-card">
-                        <div class="pop-card-img">
-                            <img src="https://picsum.photos/id/1019/200/200" alt="News">
-                        </div>
-                        <div class="pop-card-content">
-                            <span class="category">Sosial</span>
-                            <h4>Penyaluran Bantuan Air Bersih melalui Jaringan DMI</h4>
-                            <span class="date">08 Maret 2026</span>
-                        </div>
-                    </a>
+                    @foreach($popularPosts->take(3) as $popular)
+                        <a href="{{ $popular->frontend_url }}" class="pop-card">
+                            <div class="pop-card-img">
+                                <img src="{{ $popular->frontend_image }}" alt="{{ $popular->post_title }}">
+                            </div>
+                            <div class="pop-card-content">
+                                <span class="category">{{ $popular->frontend_category }}</span>
+                                <h4>{{ $popular->post_title }}</h4>
+                                <span class="date">{{ \Carbon\Carbon::parse($popular->post_date)->translatedFormat('d F Y') }}</span>
+                            </div>
+                        </a>
+                    @endforeach
 
                 </div>
             </div>

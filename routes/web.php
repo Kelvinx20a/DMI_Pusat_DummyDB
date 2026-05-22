@@ -10,6 +10,11 @@ use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\RedaksiController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\PenataanOrganisasiController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Admin\WpPostController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EventController;
+use App\Models\Notification;
 
 
 Route::get('/',[HomeController::class, 'index']);
@@ -39,7 +44,43 @@ Route::get('/kegiatan/kalender-event',[KegiatanController::class, 'kalender']);
 Route::get('/kegiatan/detail-event',[KegiatanController::class, 'detail']);
 
 
-Route::get('/redaksi/berita',[BeritaController::class, 'berita']); 
-Route::get('/redaksi/berita/detail-berita',[BeritaController::class, 'berita2']);
-Route::get('/redaksi/berita/semua-berita',[BeritaController::class, 'berita3']);
+Route::get('/redaksi/berita', [BeritaController::class, 'berita'])->name('redaksi.berita');
+Route::get('/redaksi/berita/detail-berita/{post?}', [BeritaController::class, 'berita2'])->name('redaksi.berita.detail');
+Route::get('/redaksi/berita/semua-berita', [BeritaController::class, 'berita3'])->name('redaksi.berita.semua');
 Route::get('/redaksi/susunan-redaksi',[RedaksiController::class, 'susunanredaksi']); 
+
+Route::get('/forgot-password', function () {
+    return redirect()->route('login');
+})->name('password.request');
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'authenticate'])->name('login.post');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('home.home');
+
+    Route::controller(WpPostController::class)->group(function () {
+        Route::get('/wp-posts', 'index')->name('posts.index');
+        Route::get('/wp-posts/create', 'create')->name('posts.create');
+        Route::post('/wp-posts/store', 'store')->name('posts.store');
+        Route::post('/wp-posts/publish-scheduled-due', 'publishScheduledDue')->name('posts.publishScheduledDue');
+        Route::get('/wp-posts/edit/{id}', 'edit')->name('posts.edit');
+        Route::post('/wp-posts/update/{id}', 'update')->name('posts.update');
+        Route::delete('/wp-posts/delete/{id}', 'destroy')->name('posts.delete');
+        Route::delete('/wp-posts/bulk-delete', 'bulkDestroy')->name('posts.bulkDelete');
+    });
+
+    Route::controller(EventController::class)->group(function () {
+        Route::get('/events', 'index')->name('events.index');
+        Route::post('/events/store', 'store')->name('events.store');
+        Route::put('/events/{id}', 'update')->name('events.update');
+        Route::delete('/events/{id}', 'destroy')->name('events.destroy');
+    });
+
+    Route::post('/notifications/read-all', function () {
+        Notification::where('is_read', false)->update(['is_read' => true]);
+
+        return response()->json(['success' => true]);
+    })->name('notifications.readAll');
+});
