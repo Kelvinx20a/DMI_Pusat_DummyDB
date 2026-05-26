@@ -48,7 +48,7 @@
 
     // 2. KONFIGURASI SEGMEN
     // Segmen yang labelnya tidak bisa diklik (hanya teks)
-    $disabledSegments = ['program-kerja', 'tentang-kami', 'kegiatan', 'redaksi']; 
+    $disabledSegments = ['program-kerja', 'tentang-kami', 'kegiatan', 'redaksi', 'detail-berita', 'detail-event']; 
     
     // Deteksi asal user (Origin) melalui Query String '?from='
     $originSource = request()->query('from');
@@ -76,6 +76,11 @@
                     
                     // Format Label: slug-name -> Slug Name
                     $label = ucwords(str_replace(['-', '_'], ' ', $segment));
+
+                    // Ganti segment slug dengan judul post jika tersedia
+                    if ($loop->last && isset($post) && isset($post->post_title)) {
+                        $label = $post->post_title;
+                    }
                 @endphp
 
                 <li class="bread-sep">/</li>

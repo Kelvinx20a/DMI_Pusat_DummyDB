@@ -152,7 +152,7 @@
                         <td class="text-center">
                             <div class="action-btns">
                                 @if($post->post_status === 'publish')
-                                    <a href="{{ route('redaksi.berita.detail', $post->ID) }}" target="_blank" class="btn-action" title="Lihat di halaman berita">
+                                    <a href="{{ route('redaksi.berita.detail', $post->post_name) }}" target="_blank" class="btn-action" title="Lihat di halaman berita">
                                         <i class="bx bx-show"></i>
                                     </a>
                                 @endif

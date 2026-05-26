@@ -196,14 +196,28 @@
 @endif
 
 <script>
-    document.addEventListener('trix-file-accept', e => e.preventDefault());
+    document.addEventListener('trix-file-accept', function(e) {
+        if (!/^image\/(jpeg|png|webp|avif)$/.test(e.file.type)) e.preventDefault();
+    });
+
+    document.addEventListener('trix-attachment-add', function(e) {
+        const attachment = e.attachment;
+        if (attachment.file) {
+            const form = new FormData();
+            form.append('file', attachment.file);
+            form.append('_token', '{{ csrf_token() }}');
+            fetch('{{ route("trix.upload") }}', { method: 'POST', body: form })
+                .then(r => r.json())
+                .then(data => attachment.setAttributes({ url: data.url, href: data.url }));
+        }
+    });
 
     (function guardTrixFocus() {
         let pointerTarget = null;
         let allowTrixFocusUntil = 0;
         document.addEventListener('pointerdown', function(e) {
             pointerTarget = e.target;
-            if (e.target.closest('trix-editor, .trix-wrap, trix-toolbar')) allowTrixFocusUntil = Date.now() + 800;
+            if (e.target.closest('trix-editor, .trix-wrap, trix-toolbar, .attachment, figcaption, [data-trix-mutable]')) allowTrixFocusUntil = Date.now() + 800;
         }, true);
         function setupEditor(editor) {
             if (editor.dataset.focusGuardReady === '1') return;

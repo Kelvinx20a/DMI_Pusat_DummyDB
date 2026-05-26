@@ -14,6 +14,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\WpPostController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\TrixUploadController;
 use App\Models\Notification;
 
 
@@ -45,7 +46,7 @@ Route::get('/kegiatan/detail-event',[KegiatanController::class, 'detail']);
 
 
 Route::get('/redaksi/berita', [BeritaController::class, 'berita'])->name('redaksi.berita');
-Route::get('/redaksi/berita/detail-berita/{post?}', [BeritaController::class, 'berita2'])->name('redaksi.berita.detail');
+Route::get('/redaksi/berita/detail-berita/{postSlug?}', [BeritaController::class, 'berita2'])->name('redaksi.berita.detail');
 Route::get('/redaksi/berita/semua-berita', [BeritaController::class, 'berita3'])->name('redaksi.berita.semua');
 Route::get('/redaksi/susunan-redaksi',[RedaksiController::class, 'susunanredaksi']); 
 
@@ -83,4 +84,6 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
         return response()->json(['success' => true]);
     })->name('notifications.readAll');
+
+    Route::post('/trix-upload', [TrixUploadController::class, 'store'])->name('trix.upload');
 });

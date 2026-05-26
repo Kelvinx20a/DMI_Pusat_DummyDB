@@ -29,10 +29,14 @@ class BeritaController extends Controller
         ]);
     }
 
-    public function berita2(?int $post = null)
+    public function berita2($postSlug = null)
     {
-        $post = $post
-            ? WordpressPost::with(['author', 'meta'])->findOrFail($post)
+        $post = $postSlug
+            ? WordpressPost::with(['author', 'meta'])
+                ->where('post_name', $postSlug)
+                ->where('post_type', 'post')
+                ->where('post_status', 'publish')
+                ->firstOrFail()
             : WordpressPost::with(['author', 'meta'])
                 ->where('post_type', 'post')
                 ->where('post_status', 'publish')
@@ -77,7 +81,7 @@ class BeritaController extends Controller
         $post->frontend_image = $post->getImageUrl() ?: asset('admin-assets/img/logo dmi.png');
         $post->frontend_excerpt = $post->post_excerpt ?: Str::limit(strip_tags($post->post_content), 160);
         $post->frontend_reading_time = max(1, ceil(str_word_count(strip_tags($post->post_content)) / 200));
-        $post->frontend_url = route('redaksi.berita.detail', $post->ID);
+        $post->frontend_url = route('redaksi.berita.detail', $post->post_name);
         $post->frontend_tags = $tags->isNotEmpty() ? $tags : collect([$category]);
 
         return $post;
