@@ -67,6 +67,12 @@
                     <span class="links_name">User</span>
                 </a>
             </li>
+            <li class="{{ request()->routeIs('settings.*') ? 'active' : '' }}">
+                <a href="{{ route('settings.index') }}">
+                    <i class='bx bx-search-alt-2'></i>
+                    <span class="links_name">SEO Settings</span>
+                </a>
+            </li>
         </ul>
 
         {{-- Footer: Profil + Logout --}}

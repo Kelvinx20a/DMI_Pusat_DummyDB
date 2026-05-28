@@ -1,7 +1,54 @@
- <link rel="stylesheet" href="{{ asset('css/redaksi.css') }}">
+@extends('layouts.app')
 
-  @extends('layouts.app')
-    @section('content')
+@section('title', ($post->post_title ?? 'Berita') . ' - ' . ($settings['site.name'] ?? 'DMI'))
+@section('description', $post->frontend_excerpt ?? 'Berita terbaru dari Dewan Masjid Indonesia.')
+@section('canonical', $post->frontend_url ?? url()->current())
+
+@push('meta')
+<meta property="og:title" content="{{ $post->post_title }} - DMI">
+<meta property="og:description" content="{{ $post->frontend_excerpt }}">
+<meta property="og:url" content="{{ $post->frontend_url }}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="{{ $settings['site.name'] ?? 'DMI - Dewan Masjid Indonesia' }}">
+<meta property="og:image" content="{{ $post->frontend_image }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $post->post_title }} - DMI">
+<meta name="twitter:description" content="{{ $post->frontend_excerpt }}">
+<meta name="twitter:image" content="{{ $post->frontend_image }}">
+@php
+    $ldJson = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Article',
+        'headline' => $post->post_title,
+        'description' => $post->frontend_excerpt,
+        'image' => $post->frontend_image,
+        'author' => [
+            '@type' => 'Person',
+            'name' => $post->frontend_author,
+        ],
+        'publisher' => [
+            '@type' => 'Organization',
+            'name' => $settings['site.name'] ?? 'Dewan Masjid Indonesia',
+            'logo' => [
+                '@type' => 'ImageObject',
+                'url' => asset($settings['site.logo'] ?? 'admin-assets/img/logo dmi.png'),
+            ],
+        ],
+        'datePublished' => $post->post_date,
+        'dateModified' => $post->post_modified ?? $post->post_date,
+        'mainEntityOfPage' => [
+            '@type' => 'WebPage',
+            '@id' => $post->frontend_url,
+        ],
+    ];
+@endphp
+<script type="application/ld+json">@json($ldJson, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)</script>
+@endpush
+
+@section('content')
+<link rel="stylesheet" href="{{ asset('css/redaksi.css') }}">
 
         <section class="news-detail-section">
     <div class="reading-progress-container">

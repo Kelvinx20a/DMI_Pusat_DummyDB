@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>@yield('title', ($settings['site.name'] ?? 'DMI - Dewan Masjid Indonesia'))</title>
+
+    {{-- Favicon --}}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('favicon/site.webmanifest') }}">
+
+    {{-- Meta --}}
+    <meta name="description" content="@yield('description', $settings['seo.meta_description'] ?? 'Portal resmi Dewan Masjid Indonesia.')">
+    <meta name="keywords" content="{{ $settings['seo.keywords'] ?? 'dewan masjid indonesia, dmi, masjid, berita masjid' }}">
+    <meta name="author" content="{{ $settings['site.name'] ?? 'DMI - Dewan Masjid Indonesia' }}">
+    <meta name="robots" content="@yield('robots', 'index, follow')">
+    <link rel="canonical" href="@yield('canonical', url()->current())">
+
+    {{-- Open Graph --}}
+    <meta property="og:site_name" content="{{ $settings['site.name'] ?? 'DMI - Dewan Masjid Indonesia' }}">
+    <meta property="og:url" content="{{ url()->current() }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/proker.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    
-    <title>DMI - Dewan Masjid Indonesia</title>
+
+    @stack('meta')
+
     <script src="{{ asset('js/script.js') }}"></script>
 </head>
 <body>
@@ -77,8 +97,8 @@
                     // Format Label: slug-name -> Slug Name
                     $label = ucwords(str_replace(['-', '_'], ' ', $segment));
 
-                    // Ganti segment slug dengan judul post jika tersedia
-                    if ($loop->last && isset($post) && isset($post->post_title)) {
+                    // Ganti segment slug dengan judul post jika tersedia (hanya di halaman detail)
+                    if ($loop->last && isset($post) && isset($post->post_title) && in_array('detail-berita', $segments)) {
                         $label = $post->post_title;
                     }
                 @endphp

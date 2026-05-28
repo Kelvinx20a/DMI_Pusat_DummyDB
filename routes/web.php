@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProkerDMIController;
 use App\Http\Controllers\HasilRapatKerjaController;
 use App\Http\Controllers\AkustikMasjidController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\RedaksiController;
@@ -15,8 +16,15 @@ use App\Http\Controllers\Admin\WpPostController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\TrixUploadController;
+use App\Http\Controllers\Admin\SettingsController;
 use App\Models\Notification;
 
+
+Route::get('/robots.txt', function () {
+    return response("User-agent: *\nAllow: /\nSitemap: " . url('/sitemap.xml') . "\n", 200, ['Content-Type' => 'text/plain']);
+});
+
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 
 Route::get('/',[HomeController::class, 'index']);
 
@@ -77,6 +85,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::post('/events/store', 'store')->name('events.store');
         Route::put('/events/{id}', 'update')->name('events.update');
         Route::delete('/events/{id}', 'destroy')->name('events.destroy');
+    });
+
+    Route::controller(SettingsController::class)->group(function () {
+        Route::get('/settings', 'index')->name('settings.index');
+        Route::post('/settings', 'update')->name('settings.update');
     });
 
     Route::post('/notifications/read-all', function () {

@@ -1,5 +1,19 @@
 @extends('layouts.app')
 
+@section('title', 'Semua Berita - DMI - Dewan Masjid Indonesia')
+@section('description', 'Jelajahi seluruh artikel, berita, dan informasi terbaru dari Dewan Masjid Indonesia. Temukan berita menarik sesuai topik yang Anda cari.')
+
+@push('meta')
+<meta property="og:title" content="Semua Berita - DMI - Dewan Masjid Indonesia">
+<meta property="og:description" content="Jelajahi seluruh artikel, berita, dan informasi terbaru dari Dewan Masjid Indonesia.">
+<meta property="og:url" content="{{ url()->current() }}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DMI - Dewan Masjid Indonesia">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Semua Berita - DMI - Dewan Masjid Indonesia">
+<meta name="twitter:description" content="Jelajahi seluruh artikel, berita, dan informasi terbaru dari Dewan Masjid Indonesia.">
+@endpush
+
 @section('content')
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
