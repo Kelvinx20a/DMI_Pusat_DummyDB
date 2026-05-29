@@ -445,19 +445,24 @@
 .cal-month-selector {
   display: flex;
   align-items: center;
+  gap: 8px;
   background: #f8fafc;
-  padding: 6px;
-  border-radius: 14px;
+  padding: 8px;
+  border-radius: 18px;
   border: 1px solid var(--border-color);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
 }
 
 .cal-month-display {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 0 15px;
-  min-width: 300px;
+  padding: 0 18px;
+  min-width: 220px;
+  height: 40px;
   justify-content: center;
+  background: var(--white);
+  border-radius: 12px;
 }
 
 .cal-month-display i {
@@ -472,15 +477,27 @@
 }
 
 .cal-nav-btn {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   background: var(--white);
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
   color: var(--text-dark);
   box-shadow: var(--shadow-sm);
   transition: 0.2s;
+  text-decoration: none;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.cal-nav-btn i {
+  display: block;
+  font-size: 13px;
+  line-height: 1;
 }
 
 .cal-nav-btn:hover {
@@ -546,6 +563,17 @@
   box-shadow: 0 10px 20px rgba(33, 90, 40, 0.2);
 }
 
+.cal-day.today {
+  background: var(--dmi-green);
+  color: var(--white);
+  box-shadow: 0 10px 20px rgba(33, 90, 40, 0.22);
+}
+
+.cal-day.today:hover:not(.muted) {
+  background: var(--dmi-green);
+  color: var(--white);
+}
+
 .cal-day.active:hover{
   background-color: #06420d00;
 }
@@ -555,18 +583,42 @@
   cursor: default;
 }
 
-.cal-day.has-event:not(.active) {
-  background: var(--dmi-green-light);
-  color: var(--dmi-green);
-}
-
 .event-dot {
-  width: 5px;
-  height: 5px;
-  background: #ffc107;
+  width: 7px;
+  height: 7px;
+  background: var(--dmi-green);
   border-radius: 50%;
   position: absolute;
   bottom: 8px;
+  box-shadow: 0 0 0 3px rgba(33, 90, 40, 0.12);
+}
+
+.cal-day.today .event-dot {
+  background: #ffc107;
+  box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.24);
+}
+
+.event-count-badge {
+  min-width: 16px;
+  height: 16px;
+  padding: 0 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 5px;
+  border-radius: 999px;
+  background: var(--dmi-green);
+  color: var(--white);
+  font-size: 10px;
+  line-height: 1;
+  box-shadow: 0 0 0 3px rgba(33, 90, 40, 0.12);
+}
+
+.cal-day.today .event-count-badge {
+  background: #ffc107;
+  color: #1f2937;
+  box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.24);
 }
 
 /* Sidebar Event Info */

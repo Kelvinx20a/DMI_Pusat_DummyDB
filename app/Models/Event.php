@@ -62,4 +62,11 @@ class Event extends Model
             return $imageUrl ?: asset('assets/img/placeholder.png');
         }
     }
+
+    public function getDetailUrl()
+    {
+        $slug = $this->post->post_name ?? null;
+
+        return route('kegiatan.event.detail', $slug ?: $this->event_id);
+    }
 }

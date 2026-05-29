@@ -15,6 +15,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\WpPostController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\TrixUploadController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Models\Notification;
@@ -50,6 +51,7 @@ Route::get('/tentang-kami/profil',[PengurusController::class, 'profil']);
 
 Route::get('/kegiatan/event-bulan-ini',[KegiatanController::class, 'event']);
 Route::get('/kegiatan/kalender-event',[KegiatanController::class, 'kalender']);
+Route::get('/kegiatan/detail-event/{slug}',[KegiatanController::class, 'detail'])->name('kegiatan.event.detail');
 Route::get('/kegiatan/detail-event',[KegiatanController::class, 'detail']);
 
 
@@ -82,9 +84,20 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::controller(EventController::class)->group(function () {
         Route::get('/events', 'index')->name('events.index');
+        Route::get('/events/{id}/edit', 'edit')->name('events.edit');
         Route::post('/events/store', 'store')->name('events.store');
         Route::put('/events/{id}', 'update')->name('events.update');
         Route::delete('/events/{id}', 'destroy')->name('events.destroy');
+    });
+
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/users', 'index')->name('user.user');
+        Route::get('/users/create', 'create')->name('user.create');
+        Route::post('/users', 'store')->name('user.store');
+        Route::get('/users/{id}/edit', 'edit')->name('user.edit');
+        Route::get('/users/{id}', 'show')->name('user.show');
+        Route::put('/users/{id}', 'update')->name('user.update');
+        Route::delete('/users/{id}', 'destroy')->name('user.destroy');
     });
 
     Route::controller(SettingsController::class)->group(function () {

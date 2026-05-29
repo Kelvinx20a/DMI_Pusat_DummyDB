@@ -20,8 +20,7 @@
     {{-- Header Area --}}
     <div class="header-wrapper">
         <div class="page-heading">
-            <span class="eyebrow">Manajemen Konten</span>
-            <h4 class="m-0 text-dark">Semua Berita</h4>
+            <h4 class="m-0 text-dark">All Post</h4>
         </div>
 <!-- Button Hapus Terpilih -->
         <div class="btn-two">

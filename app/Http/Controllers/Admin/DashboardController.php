@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\WordpressPost;
 use App\Models\Event;
 use App\Models\Notification;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
@@ -39,6 +40,8 @@ class DashboardController extends Controller
         $eventBerlangsung = Event::where('start_date', '<=', now())
             ->where('end_date', '>=', now())
             ->count();
+
+        $totalUser = User::count();
 
         // ── STATUS POSTINGAN ──
         $postPublish = WordpressPost::where('post_status', 'publish')
@@ -90,11 +93,22 @@ class DashboardController extends Controller
             ->take(3)
             ->get();
 
+        $recentPosts = WordpressPost::where('post_status', 'publish')
+            ->where('post_type', 'post')
+            ->orderBy('post_date', 'desc')
+            ->skip(1)
+            ->take(4)
+            ->get();
+
+        $recentActivities = Notification::orderBy('created_at', 'desc')
+            ->take(4)
+            ->get();
+
         return view('admin.home.home', compact(
             'totalBerita', 'totalViews', 'upcomingPost', 'totalEvent',
-            'eventBerlangsung', 'postPublish', 'postTerjadwal',
+            'eventBerlangsung', 'totalUser', 'postPublish', 'postTerjadwal',
             'pctPublish', 'pctTerjadwal', 'popularPosts', 'upcomingEvents',
-            'featuredPost', 'latestPosts', 'events'
+            'featuredPost', 'latestPosts', 'events', 'recentPosts', 'recentActivities'
         ));
     }
 
