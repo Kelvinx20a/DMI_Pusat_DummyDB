@@ -91,7 +91,7 @@ body.sidebar-collapsed .sidebar {
     gap: 8px;
     width: 100%;
     height: 44px;
-    background: #1976D2;
+    background: linear-gradient(135deg, #f7b84b 0%, #efaa31 100%);
     border-radius: 10px;
     color: var(--white);
     font-weight: 600;
@@ -101,7 +101,7 @@ body.sidebar-collapsed .sidebar {
 }
 
 .btn-upload:hover {
-    background: #1565C0;
+    background: linear-gradient(135deg, #efaa31 0%, #d9941f 100%);
     transform: translateY(-1px);
     color: var(--white);
 }
@@ -223,14 +223,6 @@ body.sidebar-collapsed .sidebar {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-.sidebar-profile-dots {
-    color: rgba(255,255,255,0.4);
-    font-size: 18px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
 }
 
 .sidebar-logout-btn-link {
@@ -672,6 +664,102 @@ body.sidebar-collapsed .navbar {
 /* ===================================================
    HOME SECTION
 =================================================== */
+.toast-notif {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 340px;
+    max-width: calc(100vw - 24px);
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 14px 14px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+    z-index: 999999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.toast-notif.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.toast-icon-wrap {
+    flex-shrink: 0;
+}
+
+.toast-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toast-icon-success { background: #dcfce7; color: #16a34a; }
+.toast-icon-edit { background: #dbeafe; color: #2563eb; }
+.toast-icon-delete { background: #fee2e2; color: #dc2626; }
+
+.toast-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.toast-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.toast-message {
+    margin: 4px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #6b7280;
+}
+
+.toast-close {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #9ca3af;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toast-close:hover { color: #374151; }
+
+.toast-progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 100%;
+    background: #22c55e;
+    transform-origin: left;
+}
+
+.progress-edit { background: #3b82f6; }
+.progress-delete { background: #ef4444; }
+
+@keyframes toastProgressBar {
+    from { transform: scaleX(1); }
+    to { transform: scaleX(0); }
+}
+
 .home-section {
     position: relative;
     left: var(--sidebar-width);

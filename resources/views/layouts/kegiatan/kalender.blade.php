@@ -1,177 +1,149 @@
-    <link rel="stylesheet" href="{{ asset('css/kegiatan.css') }}">
-
+<link rel="stylesheet" href="{{ asset('css/kegiatan.css') }}">
 
 @extends('layouts.app')
-    @section('content')
 
+@section('content')
+@php
+    $prevMonth = $currentMonth->copy()->subMonth()->format('Y-m');
+    $nextMonth = $currentMonth->copy()->addMonth()->format('Y-m');
+@endphp
 
-    <section class="cal-section">
-    <section class="cal-section">
-  <div class="cal-container">
-    
-    <header class="cal-header">
-      <div class="cal-title-wrap">
-        <span class="cal-label js-reveal">Jadwal Kegiatan</span>
-        <h2 class="cal-main-title js-reveal">Kalender Event</h2>
-      </div>
-      
-      <div class="cal-controls js-reveal">
-        
-        <div class="cal-month-selector">
-          <button class="cal-nav-btn" id="prevMonth">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <div class="cal-month-display">
-            <i class="far fa-calendar-alt"></i>
-            <span class="cal-current-month" id="monthDisplay">Januari 2026</span>
-          </div>
-          <button class="cal-nav-btn" id="nextMonth">
-            <i class="fas fa-chevron-right"></i>
-          </button>
-        </div>
-      </div>
-    </header>
+<section class="cal-section">
+    <div class="cal-container">
+        <header class="cal-header">
+            <div class="cal-title-wrap">
+                <span class="cal-label js-reveal">Jadwal Kegiatan</span>
+                <h2 class="cal-main-title js-reveal">Kalender Event</h2>
+            </div>
 
-    <div class="cal-layout-grid js-reveal">
-      <div class="cal-main-card">
-        <div class="cal-days-header">
-          <span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span>
-          <span>Jum</span><span>Sab</span><span>Min</span>
-        </div>
-        <div class="cal-date-grid" id="calendarGrid">
-          <div class="cal-day muted">29</div>
-          <div class="cal-day muted">30</div>
-          <div class="cal-day">1</div>
-          <div class="cal-day">2</div>
-          <div class="cal-day">3</div>
-          <div class="cal-day">4</div>
-          <div class="cal-day">5</div>
-          <div class="cal-day">6</div>
-          <div class="cal-day has-event active">7 <span class="event-dot"></span></div>
-          <div class="cal-day">8</div>
-          <div class="cal-day">9</div>
-          <div class="cal-day has-event">11 <span class="event-dot"></span></div>
-          <div class="cal-day muted">12</div>
-          <div class="cal-day muted">13</div>
-          <div class="cal-day">14</div>
-          <div class="cal-day">15</div>
-          <div class="cal-day">16</div>
-          <div class="cal-day">17</div>
-          <div class="cal-day">18</div>
-          <div class="cal-day">19</div>
-          <div class="cal-day has-event active">20 <span class="event-dot"></span></div>
-          <div class="cal-day">21</div>
-          <div class="cal-day">22</div>
-          <div class="cal-day has-event">23 <span class="event-dot"></span></div>
-          <div class="cal-day">23</div>
-          <div class="cal-day">24</div>
-          <div class="cal-day">25</div>
-          <div class="cal-day">26</div>
-          <div class="cal-day">27</div>
-          <div class="cal-day has-event">28 <span class="event-dot"></span></div>
-          <div class="cal-day">29</div>
-          <div class="cal-day">30</div>
-          </div>
-      </div>
-
-        <aside class="cal-event-sidebar js-reveal">
-            <div class="sidebar-sticky">
-                <h3 class="sidebar-title">Kegiatan Terpilih</h3>
-                <div class="selected-event-card" id="event-display-card">
-                <div class="sel-tag" id="event-tag">Event Hari Ini</div>
-                <div class="sel-date" id="event-date">07 Januari 2026</div>
-                <div class="sel-info">
-                    <h4 id="event-title">Grand Islamic Gathering</h4>
-                    <div class="sel-meta">
-                    <p><i class="far fa-clock"></i> <span id="event-time">11:59 WIB</span></p>
-                    <p><i class="fas fa-map-marker-alt"></i> <span id="event-location">Gedung DMI Pusat</span></p>
+            <div class="cal-controls js-reveal">
+                <div class="cal-month-selector">
+                    <a class="cal-nav-btn" id="prevMonth" href="{{ url('/kegiatan/kalender-event?month=' . $prevMonth) }}">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                    <div class="cal-month-display">
+                        <i class="far fa-calendar-alt"></i>
+                        <span class="cal-current-month" id="monthDisplay">{{ $currentMonth->translatedFormat('F Y') }}</span>
                     </div>
-                    <a href="{{ url('/kegiatan/detail-event?from=kalender-event') }}"><button class="btn-sel-detail">Lihat Detail Agenda</button></a>
-                </div>
+                    <a class="cal-nav-btn" id="nextMonth" href="{{ url('/kegiatan/kalender-event?month=' . $nextMonth) }}">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
                 </div>
             </div>
-        </aside>
-    </div>
+        </header>
 
-  </div>
+        <div class="cal-layout-grid js-reveal">
+            <div class="cal-main-card">
+                <div class="cal-days-header">
+                    <span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span>
+                    <span>Jum</span><span>Sab</span><span>Min</span>
+                </div>
+                <div class="cal-date-grid" id="calendarGrid" data-server-calendar="true">
+                    @foreach($calendarDays as $day)
+                        @php
+                            $dateKey = $day->format('Y-m-d');
+                            $dayEvents = $eventsByDate->get($dateKey, collect());
+                            $firstEvent = $dayEvents->first();
+                            $isMuted = !$day->isSameMonth($currentMonth);
+                            $isToday = $day->isToday();
+                            $isActive = $selectedEvent && $firstEvent && $firstEvent->event_id === $selectedEvent->event_id;
+                        @endphp
+                        <div class="cal-day {{ $isMuted ? 'muted' : '' }} {{ $isToday ? 'today' : '' }} {{ $dayEvents->isNotEmpty() ? 'has-event' : '' }} {{ $isActive ? 'active' : '' }}"
+                            @if($firstEvent)
+                                data-title="{{ e($firstEvent->post->post_title ?? 'Untitled Event') }}"
+                                data-tag="{{ now()->between($firstEvent->start_date, $firstEvent->end_date) ? 'Sedang Berjalan' : (now()->lt($firstEvent->start_date) ? 'Mendatang' : 'Selesai') }}"
+                                data-date="{{ \Carbon\Carbon::parse($firstEvent->start_date)->translatedFormat('d F Y') }}"
+                                data-time="{{ \Carbon\Carbon::parse($firstEvent->start_date)->format('H:i') }} - {{ \Carbon\Carbon::parse($firstEvent->end_date)->format('H:i') }} WIB"
+                                data-location="{{ e($firstEvent->post->getMeta('_event_venue') ?: 'Lokasi menyusul') }}"
+                                data-url="{{ $firstEvent->getDetailUrl() }}"
+                            @endif
+                        >
+                            {{ $day->day }}
+                            @if($dayEvents->isNotEmpty())
+                                @if($dayEvents->count() > 1)
+                                    <span class="event-count-badge">{{ $dayEvents->count() }}</span>
+                                @else
+                                    <span class="event-dot"></span>
+                                @endif
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <aside class="cal-event-sidebar js-reveal">
+                <div class="sidebar-sticky">
+                    <h3 class="sidebar-title">Kegiatan Terpilih</h3>
+                    <div class="selected-event-card" id="event-display-card">
+                        @if($selectedEvent)
+                            @php
+                                $selectedStart = \Carbon\Carbon::parse($selectedEvent->start_date);
+                                $selectedEnd = \Carbon\Carbon::parse($selectedEvent->end_date);
+                                $selectedStatus = now()->between($selectedStart, $selectedEnd) ? 'Sedang Berjalan' : (now()->lt($selectedStart) ? 'Mendatang' : 'Selesai');
+                            @endphp
+                            <div class="sel-tag" id="event-tag">{{ $selectedStatus }}</div>
+                            <div class="sel-date" id="event-date">{{ $selectedStart->translatedFormat('d F Y') }}</div>
+                            <div class="sel-info">
+                                <h4 id="event-title">{{ $selectedEvent->post->post_title ?? 'Untitled Event' }}</h4>
+                                <div class="sel-meta">
+                                    <p><i class="far fa-clock"></i> <span id="event-time">{{ $selectedStart->format('H:i') }} - {{ $selectedEnd->format('H:i') }} WIB</span></p>
+                                    <p><i class="fas fa-map-marker-alt"></i> <span id="event-location">{{ $selectedEvent->post->getMeta('_event_venue') ?: 'Lokasi menyusul' }}</span></p>
+                                </div>
+                                <a href="{{ $selectedEvent->getDetailUrl() }}" id="event-detail-link"><button class="btn-sel-detail">Lihat Detail Agenda</button></a>
+                            </div>
+                        @else
+                            <div class="sel-tag" id="event-tag">Kosong</div>
+                            <div class="sel-date" id="event-date">{{ $currentMonth->translatedFormat('F Y') }}</div>
+                            <div class="sel-info">
+                                <h4 id="event-title">Belum Ada Kegiatan</h4>
+                                <div class="sel-meta">
+                                    <p><i class="far fa-clock"></i> <span id="event-time">-</span></p>
+                                    <p><i class="fas fa-map-marker-alt"></i> <span id="event-location">-</span></p>
+                                </div>
+                                <a href="#" id="event-detail-link" style="display:none;"><button class="btn-sel-detail">Lihat Detail Agenda</button></a>
+                            </div>
+                        @endif
+                    </div>
+
+                </div>
+            </aside>
+        </div>
+    </div>
 </section>
 
 <script>
-
-    document.addEventListener('DOMContentLoaded', () => {
-    // 1. Data Dummy Event (Bisa diganti dengan data dari database/API)
-    const eventData = {
-        "7": {
-            title: "Grand Islamic Gathering",
-            tag: "Event Hari Ini",
-            time: "11:59 WIB",
-            location: "Gedung DMI Pusat",
-            fullDate: "07 Januari 2026"
-        },
-        "11": {
-            title: "Kajian Rutin Fiqh",
-            tag: "Kajian",
-            time: "16:00 WIB",
-            location: "Masjid Istiqlal",
-            fullDate: "11 Januari 2026"
-        },
-        "20": {
-            title: "Rapat Pleno Pengurus",
-            tag: "Rapat",
-            time: "09:00 WIB",
-            location: "Kantor Pusat DMI",
-            fullDate: "20 Januari 2026"
-        },
-        "23": {
-            title: "Bakti Sosial Jumat",
-            tag: "Sosial",
-            time: "13:30 WIB",
-            location: "Area Jakarta Selatan",
-            fullDate: "23 Januari 2026"
-        },
-        "28": {
-            title: "Workshop Digital Masjid",
-            tag: "Edukasi",
-            time: "10:00 WIB",
-            location: "Online (Zoom)",
-            fullDate: "28 Januari 2026"
-        }
-    };
-
-    const dayCells = document.querySelectorAll('.cal-day:not(.muted)');
+document.addEventListener('DOMContentLoaded', () => {
+    const dayCells = document.querySelectorAll('.cal-day');
     const eventCard = document.getElementById('event-display-card');
+    const detailLink = document.getElementById('event-detail-link');
 
     dayCells.forEach(cell => {
         cell.addEventListener('click', () => {
-            const dateNumber = cell.innerText.trim().split('\n')[0]; // Ambil angka tanggal saja
-
-            // A. Update Visual Active State
-            dayCells.forEach(c => c.classList.remove('active'));
+            dayCells.forEach(day => day.classList.remove('active'));
             cell.classList.add('active');
 
-            // B. Update Sidebar Content
-            if (eventData[dateNumber]) {
-                // Jika ada event
-                document.getElementById('event-title').innerText = eventData[dateNumber].title;
-                document.getElementById('event-tag').innerText = eventData[dateNumber].tag;
-                document.getElementById('event-date').innerText = eventData[dateNumber].fullDate;
-                document.getElementById('event-time').innerText = eventData[dateNumber].time;
-                document.getElementById('event-location').innerText = eventData[dateNumber].location;
-                eventCard.style.opacity = "1";
-                eventCard.style.transform = "translateY(0)";
-            } else {
-                // Jika tidak ada event (Tampilan Default/Kosong)
-                document.getElementById('event-title').innerText = "Tidak Ada Kegiatan";
-                document.getElementById('event-tag').innerText = "Kosong";
-                document.getElementById('event-date').innerText = dateNumber + " Januari 2026";
-                document.getElementById('event-time').innerText = "-";
-                document.getElementById('event-location').innerText = "-";
-                eventCard.style.opacity = "0.7";
+            if (cell.dataset.title) {
+                document.getElementById('event-title').innerText = cell.dataset.title;
+                document.getElementById('event-tag').innerText = cell.dataset.tag;
+                document.getElementById('event-date').innerText = cell.dataset.date;
+                document.getElementById('event-time').innerText = cell.dataset.time;
+                document.getElementById('event-location').innerText = cell.dataset.location;
+                detailLink.href = cell.dataset.url;
+                detailLink.style.display = '';
+                eventCard.style.opacity = '1';
+                eventCard.style.transform = 'translateY(0)';
+                return;
             }
+
+            document.getElementById('event-title').innerText = 'Tidak Ada Kegiatan';
+            document.getElementById('event-tag').innerText = 'Kosong';
+            document.getElementById('event-date').innerText = cell.innerText.trim();
+            document.getElementById('event-time').innerText = '-';
+            document.getElementById('event-location').innerText = '-';
+            detailLink.style.display = 'none';
+            eventCard.style.opacity = '0.7';
         });
     });
 });
-
 </script>
-
-    @endsection
+@endsection

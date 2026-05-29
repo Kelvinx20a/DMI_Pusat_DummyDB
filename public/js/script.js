@@ -168,6 +168,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.getElementById('prevMonth');
     const nextBtn = document.getElementById('nextMonth');
 
+    if (!monthDisplay || !calendarGrid || !prevBtn || !nextBtn || calendarGrid.dataset.serverCalendar === 'true') {
+        return;
+    }
+
     // 2. State Data
     let currentDate = new Date(); // Default ke hari ini
 
@@ -310,4 +314,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // redaksi (Detail Berita)
-

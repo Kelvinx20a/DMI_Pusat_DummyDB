@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
+use App\Models\Notification;
 use App\Models\WordpressPost;
 use App\Models\WordpressPostMeta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -51,11 +53,22 @@ class EventController extends Controller
             'event_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:10240',
         ]);
 
+        $titleExists = WordpressPost::where('post_type', 'tribe_events')
+            ->where('post_status', '!=', 'trash')
+            ->whereRaw('LOWER(post_title) = ?', [mb_strtolower($request->title)])
+            ->exists();
+
+        if ($titleExists) {
+            return redirect()->back()
+                ->withInput($request->except('event_image'))
+                ->withErrors(['title' => 'Judul event ini sudah ada, silahkan gunakan judul lain']);
+        }
+
         DB::connection('wordpress')->beginTransaction();
 
         try {
             $now  = now();
-            $slug = Str::slug($request->title) . '-' . time();
+            $slug = Str::slug($request->title);
 
             // 1. Simpan ke tabel posts
             $post = WordpressPost::create([
@@ -102,6 +115,14 @@ class EventController extends Controller
 
                 $metas[] = ['post_id' => $post->ID, 'meta_key' => '_event_image', 'meta_value' => $imageUrl];
             }
+
+            Notification::create([
+                'type' => 'event_created',
+                'title' => 'Event Baru Ditambahkan',
+                'message' => 'Oleh: ' . (Auth::user()->display_name ?? 'Admin') .
+                    "\nJudul: " . $request->title .
+                    "\nTanggal: " . now()->format('d M Y, H:i'),
+            ]);
 
             // 6. Insert semua meta sekaligus
             WordpressPostMeta::insert($metas);
@@ -166,6 +187,14 @@ class EventController extends Controller
                 $event->post->setMeta('_event_image', $imageUrl);
             }
 
+            Notification::create([
+                'type' => 'event_updated',
+                'title' => 'Event Diperbarui',
+                'message' => 'Oleh: ' . (Auth::user()->display_name ?? 'Admin') .
+                    "\nJudul: " . $request->title .
+                    "\nTanggal: " . now()->format('d M Y, H:i'),
+            ]);
+
             DB::connection('wordpress')->commit();
             return redirect()->route('events.index')
                              ->with('success', 'Event berhasil diperbarui!');
@@ -185,11 +214,21 @@ class EventController extends Controller
         try {
             $event = Event::findOrFail($id);
 
+            $judulEvent = $event->post->post_title ?? 'Event';
+
             WordpressPostMeta::where('post_id', $event->post_id)->delete();
 
             WordpressPost::where('ID', $event->post_id)->delete();
 
             $event->delete();
+
+            Notification::create([
+                'type' => 'event_deleted',
+                'title' => 'Event Dihapus',
+                'message' => 'Oleh: ' . (Auth::user()->display_name ?? 'Admin') .
+                    "\nJudul: " . $judulEvent .
+                    "\nTanggal: " . now()->format('d M Y, H:i'),
+            ]);
 
             DB::connection('wordpress')->commit();
             return redirect()->route('events.index')

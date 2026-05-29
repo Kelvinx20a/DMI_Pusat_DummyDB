@@ -61,10 +61,10 @@
                     <span class="links_name">Event</span>
                 </a>
             </li>
-            <li class="{{ request()->routeIs('users.*') ? 'active' : '' }}">
-                <a href="#">
+            <li class="{{ request()->routeIs('user.*') ? 'active' : '' }}">
+                <a href="{{ route('user.user') }}">
                     <i class='bx bx-user'></i>
-                    <span class="links_name">User</span>
+                    <span class="links_name">Users</span>
                 </a>
             </li>
         </ul>
@@ -80,9 +80,6 @@
                 <div class="sidebar-profile-info">
                     <span class="sidebar-profile-name">{{ Auth::user()->display_name ?? 'Admin' }}</span>
                     <span class="sidebar-profile-email">{{ Auth::user()->user_email ?? '' }}</span>
-                </div>
-                <div class="sidebar-profile-dots">
-                    <i class='bx bx-dots-vertical-rounded'></i>
                 </div>
             </div>
 
@@ -235,6 +232,28 @@
 
     </section>
 
+    <div id="toastNotif" class="toast-notif" role="alert" aria-live="polite">
+        <div class="toast-icon-wrap">
+            <div class="toast-icon toast-icon-success" id="toastIcon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                </svg>
+            </div>
+        </div>
+        <div class="toast-body">
+            <p class="toast-title" id="toastTitle">Berhasil</p>
+            <p class="toast-message" id="toastMessage">Aksi berhasil dilakukan.</p>
+        </div>
+        <button class="toast-close" onclick="hideToast()" aria-label="Tutup">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+        <div class="toast-progress" id="toastProgress"></div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
         const btnMenu = document.getElementById('btn-menu');
@@ -340,6 +359,72 @@
             if (panel && bell && !panel.contains(event.target) && !bell.contains(event.target)) {
                 closeNotif();
             }
+        });
+
+        let toastTimer = null;
+
+        function showToast(type = 'success', title = 'Berhasil', message = '') {
+            const toast = document.getElementById('toastNotif');
+            const icon = document.getElementById('toastIcon');
+            const progress = document.getElementById('toastProgress');
+            if (!toast || !icon || !progress) return;
+
+            document.getElementById('toastTitle').textContent = title;
+            document.getElementById('toastMessage').textContent = message;
+
+            icon.className = 'toast-icon';
+            progress.className = 'toast-progress';
+            progress.style.animation = 'none';
+
+            if (type === 'delete') {
+                icon.classList.add('toast-icon-delete');
+                progress.classList.add('progress-delete');
+                icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M1 7h22M8 7V5a1 1 0 011-1h6a1 1 0 011 1v2"/></svg>`;
+            } else if (type === 'edit') {
+                icon.classList.add('toast-icon-edit');
+                progress.classList.add('progress-edit');
+                icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`;
+            } else {
+                icon.classList.add('toast-icon-success');
+                icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>`;
+            }
+
+            toast.classList.add('show');
+            void progress.offsetWidth;
+            progress.style.animation = 'toastProgressBar 4s linear forwards';
+
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => hideToast(), 4000);
+        }
+
+        function hideToast() {
+            document.getElementById('toastNotif')?.classList.remove('show');
+            clearTimeout(toastTimer);
+        }
+
+        window.addEventListener('load', function () {
+            @if(session('success'))
+                const msg = @json(session('success'));
+                const lowerMsg = msg.toLowerCase();
+                let title = 'Berhasil';
+                let type = 'success';
+
+                if (lowerMsg.includes('user')) {
+                    if (lowerMsg.includes('ditambahkan')) title = 'User Ditambahkan';
+                    else if (lowerMsg.includes('diperbarui') || lowerMsg.includes('diubah')) { title = 'User Diperbarui'; type = 'edit'; }
+                    else if (lowerMsg.includes('dihapus')) { title = 'User Dihapus'; type = 'delete'; }
+                } else if (lowerMsg.includes('event')) {
+                    if (lowerMsg.includes('ditambahkan')) title = 'Event Ditambahkan';
+                    else if (lowerMsg.includes('diperbarui') || lowerMsg.includes('diubah')) { title = 'Event Diperbarui'; type = 'edit'; }
+                    else if (lowerMsg.includes('dihapus')) { title = 'Event Dihapus'; type = 'delete'; }
+                } else if (lowerMsg.includes('berita')) {
+                    if (lowerMsg.includes('diterbitkan') || lowerMsg.includes('ditambahkan')) title = 'Berita Ditambahkan';
+                    else if (lowerMsg.includes('diperbarui') || lowerMsg.includes('diubah')) { title = 'Berita Diperbarui'; type = 'edit'; }
+                    else if (lowerMsg.includes('dihapus')) { title = 'Berita Dihapus'; type = 'delete'; }
+                }
+
+                showToast(type, title, msg);
+            @endif
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
